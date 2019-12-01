@@ -64,10 +64,15 @@ Minecraft.getCol = function (box) {
 Minecraft.isOpenSpace = function (box) {
     let isOpen = true;
     console.log(box);
-    if (box.classList.contains('grass')) {
-        isOpen = false;
-    } else if (box.classList.contains('ground')) {
-        isOpen = false;
+    if (box != "") {
+
+        if (box.classList.contains('grass')) {
+            isOpen = false;
+        } else if (box.classList.contains('ground')) {
+            isOpen = false;
+        }
+    }else{
+        isOpen=false;
     }
 
     return isOpen;
@@ -78,10 +83,10 @@ Minecraft.isRemoveable = function (box) {
     let boxRow = Minecraft.getRow(box);
     let boxCol = Minecraft.getCol(box);
     let boxsList = document.getElementsByClassName('box');
-    let boxRight="";
-    let boxLeft="";
-    let boxTop="";
-    let boxBottom="";
+    let boxRight = "";
+    let boxLeft = "";
+    let boxTop = "";
+    let boxBottom = "";
 
     for (var i = 0; i < boxsList.length; i++) {
         let currentBoxRow = Minecraft.getRow(boxsList[i]);
