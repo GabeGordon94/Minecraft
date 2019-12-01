@@ -3,37 +3,39 @@ let board = document.getElementById('gameContainer');
 
 
 Minecraft.createBoard = function () {
-    let backgroundColor;
-    for (var i = 0; i < 10; i++) {
+    let backgroundClass;
+    let numOfRows=10;
+    let numOfCol=20;
+    for (var i = 0; i < numOfRows; i++) {
         console.log('first');
         let newRow = document.createElement('div');
         newRow.className = 'rows';
-        backgroundColor=Minecraft.getBoxProperty(i);
-        for (var j = 0; j < 20; j++) {
+        backgroundClass = Minecraft.getBoxProperty(i);
+        for (var j = 0; j < numOfCol; j++) {
             console.log('second');
             let box = document.createElement('div');
-            box.style.backgroundColor=backgroundColor;
+            box.classList.add(backgroundClass);
+            box.classList.add('box');
             //box.addEventListener('click', placeholder);//add event listener
-            box.className = 'box';
             newRow.append(box);
         }
         board.appendChild(newRow);
     }
 }
-Minecraft.getBoxProperty=function(rowNumber){
-    let color;
+Minecraft.getBoxProperty = function (rowNumber) {
+    let boxClass;
     switch (rowNumber) {
-        case 0: case 1: case 2:case 3:case 4:case 5:
-            color = 'blue';
+        case 0: case 1: case 2: case 3: case 4: case 5:
+            boxClass = 'sky'
             break;
         case 6:
-            color = 'green';
+            boxClass = 'grass';
             break;
-        case 7:case 8:case 9:
-            color = 'brown';
+        case 7: case 8: case 9:
+            boxClass = 'ground';
             break;
     }
-    return color;
+    return boxClass;
 }
 
 
