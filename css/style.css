@@ -1,0 +1,21 @@
+body{
+    margin:0;
+}
+#gameContainer{
+    height: calc(100vh - 100px);
+    width:100wh;
+    border:1px solid black;
+}
+.box{
+    width:5%;
+}
+
+.rows{
+    display:flex;
+    height:10%;
+}
+#toolBox{
+    position: fixed;
+    height: 100px;
+    border: 1px solid black;
+}
