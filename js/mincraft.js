@@ -42,7 +42,7 @@ Minecraft.getBoxProperty = function (rowNumber) {
 }
 
 Minecraft.clickBox = function (e) {
-    let eventBox=e.target;
+    let eventBox = e.target;
 
     eventBox.classList.remove('grass');
     eventBox.classList.remove('ground');
@@ -50,6 +50,25 @@ Minecraft.clickBox = function (e) {
     alert(e.target.classList);
 
 }
-
-
+Minecraft.createRow = function (rowId){
+    for (let i = 0; i < 6; i++) {
+        let newDiv = document.createElement('div');
+        newDiv.className = 'tool';
+        rowId.append(newDiv);
+    }
+}
+Minecraft.createToolBox = function () {
+    topToolBox = document.getElementById('top-toolBox');
+    bottomToolBox = document.getElementById('bottom-toolBox');
+    Minecraft.createRow(topToolBox);
+    Minecraft.createRow(bottomToolBox);
+    Minecraft.tools = document.getElementsByClassName('tool');
+    Minecraft.grassTool = Minecraft.tools[0];
+    Minecraft.grassTool.classList.add('grassTool');
+    Minecraft.groundTool = Minecraft.tools[1];
+    Minecraft.groundTool.classList.add('groundTool');
+    Minecraft.grassTool.innerText = "0";
+    Minecraft.groundTool.innerText = "0";
+}
+Minecraft.createToolBox();
 Minecraft.createBoard();
