@@ -17,6 +17,8 @@ Minecraft.createBoard = function () {
             let box = document.createElement('div');
             box.classList.add(backgroundClass);
             box.classList.add('box');
+            box.setAttribute('row', i);
+            box.setAttribute('col', j);
             if (box.classList.contains('grass') || box.classList.contains('ground')) {
                 box.addEventListener('click', Minecraft.clickBox);
             }
@@ -42,12 +44,66 @@ Minecraft.getBoxProperty = function (rowNumber) {
 }
 
 Minecraft.clickBox = function (e) {
-    let eventBox=e.target;
+    let eventBox = e.target;
 
-    eventBox.classList.remove('grass');
-    eventBox.classList.remove('ground');
+    if (Minecraft.isRemoveable(eventBox)) {
+        eventBox.classList.remove('grass');
+        eventBox.classList.remove('ground');
+    }
 
-    alert(e.target.classList);
+}
+
+Minecraft.getRow = function (box) {
+    return box.getAttribute('row');
+}
+
+Minecraft.getCol = function (box) {
+    return box.getAttribute('col');
+}
+
+Minecraft.isOpenSpace = function (box) {
+    let isOpen = false;
+    console.log(box);
+    if (!box.classList.contains('grass')) {
+        isOpen = true;
+    } else if (!box.classList.contains('ground')) {
+        isOpen = true;
+    }
+
+    return isOpen;
+}
+
+Minecraft.isRemoveable = function (box) {
+    //check div at all four sides - one side has to not equal ground or grass
+    let boxRow = Minecraft.getRow(box);
+    let boxCol = Minecraft.getCol(box);
+    let boxsList = document.getElementsByClassName('box');
+    let boxRight;
+    let boxLeft;
+    let boxTop;
+    let boxBottom;
+
+    for (var i = 0; i < boxsList.length; i++) {
+        let currentBoxRow = Minecraft.getRow(boxsList[i]);
+        let currentBoxCol = Minecraft.getCol(boxsList[i]);
+
+        if ((currentBoxRow == boxRow - 1) && (currentBoxCol == boxCol)) {
+            boxTop = boxsList[i];
+        } else if ((currentBoxRow == boxRow + 1) && (currentBoxCol == boxCol)) {
+            boxBottom = boxsList[i];
+        } else if ((currentBoxRow == boxRow) && (currentBoxCol == boxCol - 1)) {
+            boxLeft = boxsList[i];
+        } else if ((currentBoxRow == boxRow) && (currentBoxCol == boxCol + 1)) {
+            boxRight = boxsList[i];
+        }
+    }
+
+    if (Minecraft.isOpenSpace(boxRight) || Minecraft.isOpenSpace(boxLeft) ||
+        Minecraft.isOpenSpace(boxTop) || Minecraft.isOpenSpace(boxBottom)) {
+        return true;
+    } else {
+        return false;
+    }
 
 }
 
