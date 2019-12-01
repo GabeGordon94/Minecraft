@@ -38,5 +38,9 @@ Minecraft.getBoxProperty = function (rowNumber) {
     return boxClass;
 }
 
+Minecraft.clickOnGround = function(e){
+
+}
+
 
 Minecraft.createBoard();
