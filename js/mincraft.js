@@ -4,8 +4,8 @@ let board = document.getElementById('gameContainer');
 
 Minecraft.createBoard = function () {
     let backgroundClass;
-    let numOfRows=10;
-    let numOfCol=20;
+    let numOfRows = 10;
+    let numOfCol = 20;
     for (var i = 0; i < numOfRows; i++) {
         console.log('first');
         let newRow = document.createElement('div');
@@ -16,8 +16,8 @@ Minecraft.createBoard = function () {
             let box = document.createElement('div');
             box.classList.add(backgroundClass);
             box.classList.add('box');
-            if(box.classList.contains('grass') || box.classList.contains('ground')){
-                box.addEventListener('click',Minecraft.clickBox);
+            if (box.classList.contains('grass') || box.classList.contains('ground')) {
+                box.addEventListener('click', Minecraft.clickBox);
             }
             newRow.append(box);
         }
@@ -40,8 +40,14 @@ Minecraft.getBoxProperty = function (rowNumber) {
     return boxClass;
 }
 
-Minecraft.clickBox = function(e){
-alert('clicked');
+Minecraft.clickBox = function (e) {
+    let eventBox=e.target;
+
+    eventBox.classList.remove('grass');
+    eventBox.classList.remove('ground');
+
+    alert(e.target.classList);
+
 }
 
 
