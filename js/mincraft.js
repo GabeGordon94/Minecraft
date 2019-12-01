@@ -16,7 +16,9 @@ Minecraft.createBoard = function () {
             let box = document.createElement('div');
             box.classList.add(backgroundClass);
             box.classList.add('box');
-            //box.addEventListener('click', placeholder);//add event listener
+            if(box.classList.contains('grass') || box.classList.contains('ground')){
+                box.addEventListener('click',Minecraft.clickBox);
+            }
             newRow.append(box);
         }
         board.appendChild(newRow);
@@ -38,8 +40,8 @@ Minecraft.getBoxProperty = function (rowNumber) {
     return boxClass;
 }
 
-Minecraft.clickOnGround = function(e){
-
+Minecraft.clickBox = function(e){
+alert('clicked');
 }
 
 
