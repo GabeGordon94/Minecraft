@@ -7,6 +7,7 @@ Minecraft.createBoard = function () {
     board.style.display = 'block';
     let backgroundClass;
     let numOfRows = 10;
+
     boxElem = document.querySelector('.box')
     //console.log(boxElem.css);
     let numOfCol = 20;
@@ -187,14 +188,6 @@ Minecraft.getLeftBox = function (currentBox) {
         }
     }
     console.log('here');
-}
-Minecraft.getBoxes = function(box){
-    return {
-        top: Minecraft.getTopBox(box),
-        bottom: Minecraft.getBottomBox(box),
-        left: Minecraft.getLeftBox(box),
-        right: Minecraft.getRightBox(box),
-    } 
 }
 Minecraft.getRightBox = function (currentBox) {
     let boxsList = document.getElementsByClassName('box');
