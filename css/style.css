@@ -19,9 +19,13 @@ body{
 }
 
 .introHeading{
-    font-size: 80px;
-    color:red;
+    width:500px;
+    height: 100px;
     margin-bottom:20px;
+    background-image: url(../img/Minecraft_logo.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .introButton>button{
