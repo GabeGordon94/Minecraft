@@ -81,7 +81,7 @@ body{
 #gameContainer{
     height: calc(100vh - 100px);
     width:100wh;
-    border:1px solid black;
+    
     background-color: lightblue;
 }
 .box{
@@ -169,4 +169,17 @@ body{
     .tool{
         width: calc(100vw / 12);
     }
+}
+
+.box:hover{
+    opacity: 70%;
+}
+
+
+
+.homeResetBtn{
+    background-color:white;
+    display:flex;
+    justify-content: center;
+    align-items: center;
 }
