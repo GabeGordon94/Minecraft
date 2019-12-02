@@ -1,4 +1,3 @@
-// testing github!
 let Minecraft = {};
 let board = document.getElementById('gameContainer');
 
@@ -40,7 +39,7 @@ Minecraft.getBoxProperty = function (rowNumber) {
     let boxClass;
     switch (rowNumber) {
         case 0: case 1: case 2: case 3: case 4: case 5:
-            boxClass = 'sky'
+            boxClass = 'sky';
             break;
         case 6:
             boxClass = 'grass';
@@ -58,11 +57,14 @@ Minecraft.clickBox = function (e) {
     if (Minecraft.isRemoveable(eventBox)) {
         if (eventBox.classList.contains('grass')) {
             eventBox.classList.remove('grass');
-            Minecraft.updateResources('grass');
+            Minecraft.addResource('grass');
         } else if (eventBox.classList.contains('ground')) {
             eventBox.classList.remove('ground');
-            Minecraft.updateResources('ground');
+            Minecraft.addResource('ground');
         }
+    }
+    if (Minecraft.isBuilding) {
+        Minecraft.build(eventBox);
     }
 
 }
@@ -93,7 +95,7 @@ Minecraft.isOpenSpace = function (box) {
 }
 
 Minecraft.isRemoveable = function (box) {
-   
+
     let boxRight = Minecraft.getRightBox(box);
     let boxLeft = Minecraft.getLeftBox(box);
     let boxTop = Minecraft.getTopBox(box);
@@ -180,15 +182,18 @@ Minecraft.createToolBox = function () {
     Minecraft.createResources();
 }
 Minecraft.createResources = function () {
-    //stone, wood,
     Minecraft.grassResource = Minecraft.tools[0];
     Minecraft.grassResource.classList.add('grassResource');
+    Minecraft.grassResource.setAttribute('resource', 'grass');
     Minecraft.groundResource = Minecraft.tools[1];
     Minecraft.groundResource.classList.add('groundResource');
+    Minecraft.groundResource.setAttribute('resource', 'ground');
     Minecraft.woodResource = Minecraft.tools[6];
     Minecraft.woodResource.classList.add('woodResource');
+    Minecraft.woodResource.setAttribute('resource', 'wood');
     Minecraft.stoneResource = Minecraft.tools[7];
     Minecraft.stoneResource.classList.add('stoneResource');
+    Minecraft.stoneResource.setAttribute('resource', 'stone');
     Minecraft.grassResource.innerText = Minecraft.resources.grass;
     Minecraft.groundResource.innerText = Minecraft.resources.ground;
     Minecraft.woodResource.innerText = Minecraft.resources.wood;
@@ -198,12 +203,34 @@ Minecraft.createResources = function () {
     }
 }
 Minecraft.handleBuild = function (e) {
-    console.log(e);
+    Minecraft.currentResource = e.target.getAttribute('resource');
+    switch (Minecraft.currentResource) {
+        case 'wood': case 'stone': case 'grass': case 'ground': {
+            Minecraft.isBuilding = true;
+        }
+            break;
+    }
 }
-Minecraft.updateResources = function (type) {
+Minecraft.addResource = function (type) {
     Minecraft.resources[type] += 1;
     let typeResource = type + 'Resource';
     Minecraft[typeResource].innerText = Minecraft.resources[type];
+}
+Minecraft.removeResource = function (type) {
+    if (Minecraft.resources[type] == 0) {
+        return;
+    }
+    Minecraft.resources[type] -= 1;
+    Minecraft.lastResource = type;
+    let typeResource = type + 'Resource';
+    Minecraft[typeResource].innerText = Minecraft.resources[type];
+    Minecraft.chosenResource = true;
+}
+Minecraft.build = function (box) {
+    box.classList.add(Minecraft.currentResource);
+    Minecraft.removeResource(Minecraft.currentResource);  
+    Minecraft.isBuilding = false;
+    Minecraft.chosenResource = false;  
 }
 Minecraft.start = function () {
     Minecraft.createBoard();
