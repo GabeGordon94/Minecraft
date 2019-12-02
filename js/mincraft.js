@@ -368,14 +368,21 @@ Minecraft.createCloud = function (startingBox) {
     let middleCloud=startingBox;
     let leftCloud=Minecraft.getLeftBox(middleCloud);
     let rightCloud=Minecraft.getRightBox(middleCloud);
+    let farRightCloud=Minecraft.getRightBox(rightCloud);
     let topCloud=Minecraft.getTopBox(middleCloud);
+    let topRightCloud=Minecraft.getRightBox(topCloud);
     let bottomCloud=Minecraft.getBottomBox(middleCloud);
+    let bottomRightCloud=Minecraft.getRightBox(bottomCloud);
 
     middleCloud.classList.add('cloud');
     leftCloud.classList.add('cloud');
     rightCloud.classList.add('cloud');
+    farRightCloud.classList.add('cloud');
     topCloud.classList.add('cloud');
+    topRightCloud.classList.add('cloud');
     bottomCloud.classList.add('cloud');
+    bottomRightCloud.classList.add('cloud');
+
 }
 
 Minecraft.addDoubleStone = function (startingBox) {
