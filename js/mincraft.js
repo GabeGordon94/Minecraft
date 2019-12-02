@@ -64,7 +64,7 @@ Minecraft.createBoard = function () {
         shovel: ['ground', 'grass'],
         pickaxe: 'stone'
     }
-    Minecraft.activeTool = Minecraft.tools.shovel
+
 }
 
 Minecraft.getBoxProperty = function (rowNumber) {
@@ -83,23 +83,12 @@ Minecraft.getBoxProperty = function (rowNumber) {
     return boxClass;
 }
 
-Minecraft.checkActiveTool = function(eventBox){
-    for (let i = 0; i < eventBox.classList.length; i++){
-        if (Minecraft.activeTool.includes(eventBox.classList[i])){
-            Minecraft.toolCanBuild = true;
-            console.log('here')
-        } else {
-            Minecraft.toolCanBuild = false;
-        }
-    }
-}
 
 
 Minecraft.clickBox = function (e) {
     let eventBox = e.target;
     let resource = eventBox.getAttribute('resource');
     if (Minecraft.isRemoveable(eventBox)) {
-        Minecraft.checkActiveTool(eventBox)
         if (resource == 'grass') {
             eventBox.classList.remove('grass');
             Minecraft.addResource('grass');
@@ -278,13 +267,36 @@ Minecraft.createResources = function () {
         Minecraft.tools[i].addEventListener('click', Minecraft.handleBuild)
     }
 }
+
+// Minecraft.checkActiveTool = function(eventBox){
+//     for (let i = 0; i < eventBox.classList.length; i++){
+//         if (Minecraft.activeTool.includes(eventBox.classList[i])){
+//             Minecraft.toolCanBuild = true;
+//             console.log('here')
+//         } else {
+//             Minecraft.toolCanBuild = false;
+//         }
+//     }
+// }
+
+Minecraft.chooseTool = function(e){
+    Minecraft.activeTool.classList.remove('selectedTool')
+    e.target.classList.add('selectedTool')
+    Minecraft.activeTool = e.target
+}
+
 Minecraft.createToolsinToolBox = function () {
     Minecraft.axeTool = Minecraft.tools[3];
-    Minecraft.axeTool.classList.add('axe');
+    Minecraft.axeTool.classList.add('axe', 'selectedTool');
+    Minecraft.axeTool.addEventListener('click', Minecraft.chooseTool)
     Minecraft.shovelTool = Minecraft.tools[4];
     Minecraft.shovelTool.classList.add('shovel');
+    Minecraft.shovelTool.addEventListener('click', Minecraft.chooseTool)
     Minecraft.pickaxeTool = Minecraft.tools[5];
     Minecraft.pickaxeTool.classList.add('pickaxe');
+    Minecraft.pickaxeTool.addEventListener('click', Minecraft.chooseTool)
+
+    Minecraft.activeTool = Minecraft.axeTool
 }
 Minecraft.createToHome = function () {
     Minecraft.reset = Minecraft.tools[9];

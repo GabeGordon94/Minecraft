@@ -146,19 +146,26 @@ body{
     opacity: 0.75;
 }
 .axe{
-    background-image: url('../img/axe.jpg');
+    background-image: url('../img/diamond_axe.png');
     background-size: contain;
     background-repeat: no-repeat;
+    background-position: center;
 }
 .shovel{
-    background-image: url('../img/shovel.jpg');
+    background-image: url('../img/diamond_shovel.png');
     background-size: contain;
     background-repeat: no-repeat;
+    background-position: center;
 }
 .pickaxe{
-    background-image: url('../img/pickaxe.jpg');
+    background-image: url('../img/diamond_hoe.png');
     background-size: contain;
     background-repeat: no-repeat;
+    background-position: center;
+}
+
+.selectedTool{
+    background-color: rgba(255, 234, 0, 0.8)
 }
 @media screen and (max-width: 576px){
     .tool{
