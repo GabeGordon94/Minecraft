@@ -393,10 +393,13 @@ Minecraft.addTree = function (startingBox) {
 
     firstWood.classList.add('wood');
     firstWood.addEventListener('click', Minecraft.clickBox);
+    firstWood.setAttribute('resource', 'wood');
     secondWood.classList.add('wood');
     secondWood.addEventListener('click', Minecraft.clickBox);
+    secondWood.setAttribute('resource', 'wood');
     thirdWood.classList.add('wood');
     thirdWood.addEventListener('click', Minecraft.clickBox);
+    thirdWood.setAttribute('resource', 'wood');
     middleLeaf.classList.add('leaves');
     middleRightLeaf.classList.add('leaves');
     middleLeftLeaf.classList.add('leaves');
@@ -411,13 +414,16 @@ Minecraft.addDoubleStone = function (startingBox) {
 
     firstStone.classList.add('stone');
     firstStone.addEventListener('click', Minecraft.clickBox);
+    firstStone.setAttribute('resource', 'stone');
     secondStone.classList.add('stone');
     secondStone.addEventListener('click', Minecraft.clickBox);
+    secondStone.setAttribute('resource', 'stone');
 }
 Minecraft.addSingleStone = function (startingBox) {
     let firstStone = startingBox;
 
     firstStone.classList.add('stone');
+    firstStone.setAttribute('resource', 'stone');
     firstStone.addEventListener('click', Minecraft.clickBox);
 }
 Minecraft.setIntroScreen();
