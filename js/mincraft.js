@@ -1,10 +1,11 @@
 let Minecraft = {};
 let board = document.getElementById('gameContainer');
-
+let toolbox = document.getElementById('toolBox');
 
 Minecraft.createBoard = function () {
     board.innerHTML = "";
     board.style.display = 'block';
+    toolBox.style.display = 'block';
     let backgroundClass;
     let numOfRows = 10;
 
@@ -271,11 +272,23 @@ Minecraft.createToHome = function () {
     Minecraft.reset.id = 'homeBtn';
     Minecraft.reset.innerText = "Home";
     Minecraft.reset.addEventListener('click', Minecraft.start);
+    Minecraft.reset = Minecraft.tools[9];
+    Minecraft.reset.id = 'homeBtn';
+    Minecraft.reset.innerText = "Home";
+    Minecraft.reset.addEventListener('click', Minecraft.start);
+    Minecraft.home = Minecraft.tools[9];
+    Minecraft.home.id = 'homeBtn';
+    Minecraft.home.classList.add("homeResetBtn");
+    Minecraft.home.innerText = "Home";
+    Minecraft.home.addEventListener('click', Minecraft.setIntroScreen);
 }
 Minecraft.createReset = function () {
     Minecraft.reset = Minecraft.tools[10];
     Minecraft.reset.id = 'resetBtn';
     Minecraft.reset.innerText = "Reset";
+    Minecraft.reset.classList.add("homeResetBtn");
+    Minecraft.reset.innerText = "Reset";
+    Minecraft.reset.addEventListener('click', Minecraft.start);
 }
 Minecraft.handleBuild = function (e) {
     Minecraft.currentResource = e.target.getAttribute('resource');
@@ -346,11 +359,13 @@ Minecraft.start = function () {
 
 Minecraft.setIntroScreen = function () {
     board.style.display = 'none';
+    toolbox.style.display = 'none';
     let showIntro = document.getElementById("tutorialButton");
     let hideButton = document.getElementById('closeTutorial');
     let tutorialWrapper = document.getElementById('tutorialWrapper');
     let newGameButton = document.getElementById('newGameButton');
-    let introScreen = document.getElementById('intro')
+    let introScreen = document.getElementById('intro');
+    introScreen.style.display = 'flex';
 
     showIntro.addEventListener('click', function () {
         tutorialWrapper.style.display = 'flex';
