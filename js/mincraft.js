@@ -57,7 +57,7 @@ Minecraft.createBoard = function () {
         shovel: ['ground', 'grass'],
         pickaxe: 'stone'
     }
-
+    Minecraft.activeTool = Minecraft.tools.shovel
 }
 
 Minecraft.getBoxProperty = function (rowNumber) {
@@ -76,9 +76,21 @@ Minecraft.getBoxProperty = function (rowNumber) {
     return boxClass;
 }
 
+Minecraft.checkActiveTool = function(eventBox){
+    for (let i = 0; i < eventBox.classList.length; i++){
+        if (Minecraft.activeTool.includes(eventBox.classList[i])){
+            Minecraft.toolCanBuild = true;
+            console.log('here')
+        } else {
+            Minecraft.toolCanBuild = false;
+        }
+    }
+}
+
 Minecraft.clickBox = function (e) {
     let eventBox = e.target;
     if (Minecraft.isRemoveable(eventBox)) {
+        Minecraft.checkActiveTool(eventBox)
         if (eventBox.classList.contains('grass')) {
             eventBox.classList.remove('grass');
             Minecraft.addResource('grass');
