@@ -304,6 +304,7 @@ Minecraft.removeResource = function (type) {
     Minecraft.chosenResource = true;
 }
 Minecraft.build = function (box) {
+    let boxes = Minecraft.getBoxes(box);
     box.classList.add(Minecraft.currentResource);
     Minecraft.removeResource(Minecraft.currentResource);
     Minecraft.isBuilding = false;
