@@ -7,6 +7,7 @@ Minecraft.createBoard = function () {
     board.style.display = 'block';
     let backgroundClass;
     let numOfRows = 10;
+
     boxElem = document.querySelector('.box')
     //console.log(boxElem.css);
     let numOfCol = 20;
@@ -51,17 +52,10 @@ Minecraft.createBoard = function () {
         ground: 0,
         grass: 0
     }
-<<<<<<< HEAD
-    Minecraft.tools ={
-        axe : 'wood',
-        shovel : ['ground', 'grass'],
-        pickaxe : 'stone'
-=======
     Minecraft.tools = {
         axe: 'wood',
         shovel: ['ground', 'grass'],
         pickaxe: 'stone'
->>>>>>> 85b54d3873d26ce77be9e73fbf11d16f0d8f5e3f
     }
 
 }
@@ -194,14 +188,6 @@ Minecraft.getLeftBox = function (currentBox) {
         }
     }
     console.log('here');
-}
-Minecraft.getBoxes = function(box){
-    return {
-        top: Minecraft.getTopBox(box),
-        bottom: Minecraft.getBottomBox(box),
-        left: Minecraft.getLeftBox(box),
-        right: Minecraft.getRightBox(box),
-    } 
 }
 Minecraft.getRightBox = function (currentBox) {
     let boxsList = document.getElementsByClassName('box');
