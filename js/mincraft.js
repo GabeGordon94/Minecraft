@@ -106,7 +106,7 @@ Minecraft.getCol = function (box) {
 
 Minecraft.isOpenSpace = function (box) {
     let isOpen = true;
-    if (box != "") {
+    if (box != "" && box != undefined) {
 
         if (box.classList.contains('grass')) {
             isOpen = false;
@@ -303,12 +303,15 @@ Minecraft.addDoubleStone = function (startingBox){
     let secondStone = Minecraft.getTopBox(startingBox);
 
     firstStone.classList.add('stone');
+    firstStone.addEventListener('click',Minecraft.clickBox);
     secondStone.classList.add('stone');
+    secondStone.addEventListener('click',Minecraft.clickBox);
 }
 Minecraft.addSingleStone = function (startingBox){
     let firstStone = startingBox;
-
+    
     firstStone.classList.add('stone');
+    firstStone.addEventListener('click',Minecraft.clickBox);
 }
 Minecraft.setIntroScreen();
 
