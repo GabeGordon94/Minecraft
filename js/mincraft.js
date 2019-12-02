@@ -91,11 +91,11 @@ Minecraft.clickBox = function (e) {
 
     if (eventBox.classList.contains('wood')) {
         eventBox.classList.remove('wood');
-        Minecraft.updateResources('wood');
+        Minecraft.addResource('wood');
     }
     if (eventBox.classList.contains('stone')) {
         eventBox.classList.remove('stone');
-        Minecraft.updateResources('stone');
+        Minecraft.addResource('stone');
     }
 }
 
