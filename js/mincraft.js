@@ -8,12 +8,10 @@ Minecraft.createBoard = function () {
     let numOfRows = 10;
     let numOfCol = 20;
     for (var i = 0; i < numOfRows; i++) {
-        console.log('first');
         let newRow = document.createElement('div');
         newRow.className = 'rows';
         backgroundClass = Minecraft.getBoxProperty(i);
         for (var j = 0; j < numOfCol; j++) {
-            console.log('second');
             let box = document.createElement('div');
             box.classList.add(backgroundClass);
             box.classList.add('box');
