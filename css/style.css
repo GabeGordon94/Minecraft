@@ -1,6 +1,79 @@
 body{
     margin:0;
+    font-family: 'Tomorrow', sans-serif;
 }
+#intro{
+    height:100vh;
+    width:100vw;
+    background-image: url(https://img.wallpapersafari.com/desktop/1920/1080/71/84/FtbjAv.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-weight: 900;
+    
+}
+
+.introHeading{
+    font-size: 80px;
+    color:red;
+    margin-bottom:20px;
+}
+
+.introButton>button{
+    font-family: 'Tomorrow', sans-serif;
+    font-weight: 900;
+    font-size: 100%;
+    border-radius: 5px;
+    margin: 0 6px 0 6px
+}
+
+#tutorialWrapper{
+    height:100vh;
+    width:100vw;
+    position: absolute;
+    background-color:rgba(112,128,144, 0.8);
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+
+.tutorialBox{
+    height:70vh;
+    width:35vw;
+    background-color: whitesmoke;
+    border-radius:5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    padding:10px;
+}
+
+.tutorialMainText{
+    margin: 0 40px 0 40px;
+}
+
+.tutorialHeader{
+    font-weight: 900;
+    font-size:35px;
+    
+}
+#closeTutorial{
+    font-family: 'Tomorrow', sans-serif;
+    font-weight: 900;
+    font-size: 20px;
+    border-radius:5px;
+    background-color: tomato;
+    border:2px solid black;
+    
+}
+
 #gameContainer{
     height: calc(100vh - 100px);
     width:100wh;

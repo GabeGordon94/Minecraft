@@ -162,4 +162,27 @@ Minecraft.start = function () {
     Minecraft.createBoard();
     Minecraft.createToolBox();
 }
-Minecraft.start();
+
+Minecraft.setIntroScreen = function(){
+    let showIntro = document.getElementById("tutorialButton");
+    let hideButton = document.getElementById('closeTutorial');
+    let tutorialWrapper = document.getElementById('tutorialWrapper');
+    let newGameButton = document.getElementById('newGameButton');
+    let introScreen = document.getElementById('intro')
+
+    showIntro.addEventListener('click', function(){
+        tutorialWrapper.style.display = 'flex';
+    });
+    hideButton.addEventListener('click', function(){
+        tutorialWrapper.style.display = "none";
+    })
+    newGameButton.addEventListener('click', function(){
+        introScreen.style.display = "none";
+    })
+    newGameButton.addEventListener('click', Minecraft.start)
+    
+}
+
+Minecraft.setIntroScreen();
+
+
