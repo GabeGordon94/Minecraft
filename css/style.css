@@ -138,6 +138,22 @@ body{
 .leaves, .leavesResource{
     background-image: url('../img/leaves.png');
 }
+
+.axe{
+    background-image: url('../img/axe.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.shovel{
+    background-image: url('../img/shovel.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.pickaxe{
+    background-image: url('../img/pickaxe.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
 @media screen and (max-width: 576px){
     .tool{
         width: calc(100vw / 8);
