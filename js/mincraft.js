@@ -19,6 +19,7 @@ Minecraft.createBoard = function () {
     let firstStoneRoot = stoneSpots[Math.floor(Math.random() * stoneSpots.length)]
     let secondStoneRoot = stoneSpots[Math.floor(Math.random() * stoneSpots.length)]
     let thirdStoneRoot = stoneSpots[Math.floor(Math.random() * stoneSpots.length)]
+    let cloudPlaceholder;
     for (var i = 0; i < numOfRows; i++) {
         let newRow = document.createElement('div');
         newRow.className = 'rows';
@@ -29,6 +30,9 @@ Minecraft.createBoard = function () {
             box.classList.add('box');
             box.setAttribute('row', i);
             box.setAttribute('col', j);
+            if(i==1 && j == 4){
+                cloudPlaceholder=box;
+            }
             if (i == 5 && j == treeRoot) {
                 Minecraft.addTree(box);
             }
@@ -48,6 +52,7 @@ Minecraft.createBoard = function () {
         }
         board.appendChild(newRow);
     }
+    Minecraft.createCloud(cloudPlaceholder);
     Minecraft.resources = {
         wood: 0,
         stone: 0,
@@ -359,6 +364,19 @@ Minecraft.addTree = function (startingBox) {
     topRightLeft.classList.add('leaves');
     topLeftLeft.classList.add('leaves');
 }
+Minecraft.createCloud = function (startingBox) {
+    let middleCloud=startingBox;
+    let leftCloud=Minecraft.getLeftBox(middleCloud);
+    let rightCloud=Minecraft.getRightBox(middleCloud);
+    let topCloud=Minecraft.getTopBox(middleCloud);
+    let bottomCloud=Minecraft.getBottomBox(middleCloud);
+
+    middleCloud.classList.add('cloud');
+    leftCloud.classList.add('cloud');
+    rightCloud.classList.add('cloud');
+    topCloud.classList.add('cloud');
+    bottomCloud.classList.add('cloud');
+}
 
 Minecraft.addDoubleStone = function (startingBox) {
     let firstStone = startingBox;
@@ -376,5 +394,4 @@ Minecraft.addSingleStone = function (startingBox) {
     firstStone.addEventListener('click', Minecraft.clickBox);
 }
 Minecraft.setIntroScreen();
-
 
