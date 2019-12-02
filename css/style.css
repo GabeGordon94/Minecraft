@@ -45,6 +45,10 @@ body{
     
 }
 
+.wood{
+    background-image: url('http://vincentshairstudio.co/wp-content/uploads/2019/07/wood-texture-minecraft-minecraft-oak-wood-plank-texture-wood-sword-minecraft-texture.jpg');
+}
+
 .grass, .grassTool{
     background-size: cover;
     background-repeat: no-repeat;
