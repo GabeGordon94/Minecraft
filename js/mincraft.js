@@ -4,6 +4,7 @@ let board = document.getElementById('gameContainer');
 
 
 Minecraft.createBoard = function () {
+    board.style.display='block';
     let backgroundClass;
     let numOfRows = 10;
     let numOfCol = 20;
@@ -164,6 +165,7 @@ Minecraft.start = function () {
 }
 
 Minecraft.setIntroScreen = function(){
+    board.style.display='none';
     let showIntro = document.getElementById("tutorialButton");
     let hideButton = document.getElementById('closeTutorial');
     let tutorialWrapper = document.getElementById('tutorialWrapper');
