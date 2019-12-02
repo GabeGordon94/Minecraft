@@ -138,6 +138,8 @@ body{
 .leaves, .leavesResource{
     background-image: url('../img/leaves.png');
 }
+.stoneResource:hover, .woodResource:hover, .groundResource:hover, .grassResource:hover{
+    opacity: 0.75;
 
 .axe{
     background-image: url('../img/axe.jpg');
