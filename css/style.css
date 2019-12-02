@@ -122,9 +122,9 @@ body{
     cursor: pointer;
 }
 
-.sky{
+/* .sky{
     
-}
+} */
 
 .grass, .grassResource{
     background-image: url('../img/grass.jpg');

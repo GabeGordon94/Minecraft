@@ -53,7 +53,7 @@ Minecraft.createBoard = function () {
     }
     Minecraft.tools ={
         axe : 'wood',
-        shovel : 'ground',
+        shovel : ['ground', 'grass'],
         pickaxe : 'stone'
     }
 }
