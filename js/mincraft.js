@@ -3,6 +3,7 @@ let board = document.getElementById('gameContainer');
 
 
 Minecraft.createBoard = function () {
+    board.innerHTML="";
     board.style.display = 'block';
     let backgroundClass;
     let numOfRows = 10;
@@ -10,11 +11,11 @@ Minecraft.createBoard = function () {
     //console.log(boxElem.css);
     let numOfCol = 20;
     let treeSpots = [3, 9, 10, 14, 18]
-    let treeRoot = treeSpots[Math.floor(Math.random()*treeSpots.length)]
-    let stoneSpots = [1,5,6,7,12,13,16]
-    let firstStoneRoot = stoneSpots[Math.floor(Math.random()*stoneSpots.length)]
-    let secondStoneRoot = stoneSpots[Math.floor(Math.random()*stoneSpots.length)]
-    let thirdStoneRoot = stoneSpots[Math.floor(Math.random()*stoneSpots.length)]
+    let treeRoot = treeSpots[Math.floor(Math.random() * treeSpots.length)]
+    let stoneSpots = [1, 5, 6, 7, 12, 13, 16]
+    let firstStoneRoot = stoneSpots[Math.floor(Math.random() * stoneSpots.length)]
+    let secondStoneRoot = stoneSpots[Math.floor(Math.random() * stoneSpots.length)]
+    let thirdStoneRoot = stoneSpots[Math.floor(Math.random() * stoneSpots.length)]
     for (var i = 0; i < numOfRows; i++) {
         let newRow = document.createElement('div');
         newRow.className = 'rows';
@@ -28,13 +29,13 @@ Minecraft.createBoard = function () {
             if (i == 5 && j == treeRoot) {
                 Minecraft.addTree(box);
             }
-            if (i == 5 && j == firstStoneRoot){
+            if (i == 5 && j == firstStoneRoot) {
                 Minecraft.addDoubleStone(box)
             }
-            if (i == 5 && j == secondStoneRoot && firstStoneRoot != secondStoneRoot){
+            if (i == 5 && j == secondStoneRoot && firstStoneRoot != secondStoneRoot) {
                 Minecraft.addDoubleStone(box)
             }
-            if (i == 5 && j == thirdStoneRoot && thirdStoneRoot != firstStoneRoot && thirdStoneRoot != secondStoneRoot){
+            if (i == 5 && j == thirdStoneRoot && thirdStoneRoot != firstStoneRoot && thirdStoneRoot != secondStoneRoot) {
                 Minecraft.addSingleStone(box)
             }
             if (box.classList.contains('grass') || box.classList.contains('ground')) {
@@ -50,11 +51,12 @@ Minecraft.createBoard = function () {
         ground: 0,
         grass: 0
     }
-    Minecraft.tools ={
-        axe : 'wood',
-        shovel : 'ground',
-        pickaxe : 'stone'
+    Minecraft.tools = {
+        axe: 'wood',
+        shovel: ['ground', 'grass'],
+        pickaxe: 'stone'
     }
+
 }
 
 Minecraft.getBoxProperty = function (rowNumber) {
@@ -115,10 +117,10 @@ Minecraft.isOpenSpace = function (box) {
             isOpen = false;
         } else if (box.classList.contains('ground')) {
             isOpen = false;
-        }else if(box.classList.contains('stone')){
-            isOpen=false;
-        }else if(box.classList.contains('wood')){
-            isOpen=false;
+        } else if (box.classList.contains('stone')) {
+            isOpen = false;
+        } else if (box.classList.contains('wood')) {
+            isOpen = false;
         }
     } else {
         isOpen = false;
@@ -217,11 +219,17 @@ Minecraft.createRow = function (rowId) {
 }
 Minecraft.createToolBox = function () {
     topToolBox = document.getElementById('top-toolBox');
+    topToolBox.innerHTML='';
     bottomToolBox = document.getElementById('bottom-toolBox');
+    bottomToolBox.innerHTML='';
     Minecraft.createRow(topToolBox);
     Minecraft.createRow(bottomToolBox);
     Minecraft.tools = document.getElementsByClassName('tool');
     Minecraft.createResources();
+    Minecraft.createToolsinToolBox();
+    Minecraft.createToHome();
+    Minecraft.createReset();
+    Minecraft.resetResources();
 }
 Minecraft.createResources = function () {
     Minecraft.grassResource = Minecraft.tools[0];
@@ -240,20 +248,29 @@ Minecraft.createResources = function () {
     Minecraft.groundResource.innerText = Minecraft.resources.ground;
     Minecraft.woodResource.innerText = Minecraft.resources.wood;
     Minecraft.stoneResource.innerText = Minecraft.resources.stone;
-    Minecraft.createToolsinToolBox();
     for (let i = 0; i < Minecraft.tools.length; i++) {
         Minecraft.tools[i].addEventListener('click', Minecraft.handleBuild)
     }
 }
-Minecraft.createToolsinToolBox=function(){
-    	Minecraft.axeTool = Minecraft.tools[3];
-    	Minecraft.axeTool.classList.add('axe');
-    	Minecraft.shovelTool = Minecraft.tools[4];
-    	Minecraft.shovelTool.classList.add('shovel');
-    	Minecraft.pickaxeTool = Minecraft.tools[5];
-    	Minecraft.pickaxeTool.classList.add('pickaxe');
+Minecraft.createToolsinToolBox = function () {
+    Minecraft.axeTool = Minecraft.tools[3];
+    Minecraft.axeTool.classList.add('axe');
+    Minecraft.shovelTool = Minecraft.tools[4];
+    Minecraft.shovelTool.classList.add('shovel');
+    Minecraft.pickaxeTool = Minecraft.tools[5];
+    Minecraft.pickaxeTool.classList.add('pickaxe');
 }
-
+Minecraft.createToHome = function () {
+    Minecraft.reset=Minecraft.tools[9];
+    Minecraft.reset.id='homeBtn';
+    Minecraft.reset.innerText="Home";
+    Minecraft.reset.addEventListener('click',Minecraft.start);
+}
+Minecraft.createReset = function () {
+    Minecraft.reset=Minecraft.tools[10];
+    Minecraft.reset.id='resetBtn';
+    Minecraft.reset.innerText="Reset";
+}
 Minecraft.handleBuild = function (e) {
     Minecraft.currentResource = e.target.getAttribute('resource');
     switch (Minecraft.currentResource) {
@@ -268,6 +285,14 @@ Minecraft.addResource = function (type) {
     let typeResource = type + 'Resource';
     Minecraft[typeResource].innerText = Minecraft.resources[type];
 }
+
+Minecraft.resetResources = function(){
+    Minecraft.grassResource.innerText='0';
+    Minecraft.stoneResource.innerText='0';
+    Minecraft.groundResource.innerText='0';
+    Minecraft.woodResource.innerText='0';
+}
+
 Minecraft.removeResource = function (type) {
     if (Minecraft.resources[type] == 0) {
         return;
@@ -280,9 +305,9 @@ Minecraft.removeResource = function (type) {
 }
 Minecraft.build = function (box) {
     box.classList.add(Minecraft.currentResource);
-    Minecraft.removeResource(Minecraft.currentResource);  
+    Minecraft.removeResource(Minecraft.currentResource);
     Minecraft.isBuilding = false;
-    Minecraft.chosenResource = false;  
+    Minecraft.chosenResource = false;
 }
 Minecraft.start = function () {
     Minecraft.createBoard();
@@ -335,20 +360,20 @@ Minecraft.addTree = function (startingBox) {
     topLeftLeft.classList.add('leaves');
 }
 
-Minecraft.addDoubleStone = function (startingBox){
+Minecraft.addDoubleStone = function (startingBox) {
     let firstStone = startingBox;
     let secondStone = Minecraft.getTopBox(startingBox);
 
     firstStone.classList.add('stone');
-    firstStone.addEventListener('click',Minecraft.clickBox);
+    firstStone.addEventListener('click', Minecraft.clickBox);
     secondStone.classList.add('stone');
-    secondStone.addEventListener('click',Minecraft.clickBox);
+    secondStone.addEventListener('click', Minecraft.clickBox);
 }
-Minecraft.addSingleStone = function (startingBox){
+Minecraft.addSingleStone = function (startingBox) {
     let firstStone = startingBox;
-    
+
     firstStone.classList.add('stone');
-    firstStone.addEventListener('click',Minecraft.clickBox);
+    firstStone.addEventListener('click', Minecraft.clickBox);
 }
 Minecraft.setIntroScreen();
 
