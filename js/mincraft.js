@@ -60,12 +60,17 @@ Minecraft.getCol = function (box) {
 }
 
 Minecraft.isOpenSpace = function (box) {
-    let isOpen = false;
+    let isOpen = true;
     console.log(box);
-    if (!box.classList.contains('grass')) {
-        isOpen = true;
-    } else if (!box.classList.contains('ground')) {
-        isOpen = true;
+    if (box != "") {
+
+        if (box.classList.contains('grass')) {
+            isOpen = false;
+        } else if (box.classList.contains('ground')) {
+            isOpen = false;
+        }
+    }else{
+        isOpen=false;
     }
 
     return isOpen;
@@ -76,10 +81,10 @@ Minecraft.isRemoveable = function (box) {
     let boxRow = Minecraft.getRow(box);
     let boxCol = Minecraft.getCol(box);
     let boxsList = document.getElementsByClassName('box');
-    let boxRight;
-    let boxLeft;
-    let boxTop;
-    let boxBottom;
+    let boxRight = "";
+    let boxLeft = "";
+    let boxTop = "";
+    let boxBottom = "";
 
     for (var i = 0; i < boxsList.length; i++) {
         let currentBoxRow = Minecraft.getRow(boxsList[i]);
@@ -87,11 +92,11 @@ Minecraft.isRemoveable = function (box) {
 
         if ((currentBoxRow == boxRow - 1) && (currentBoxCol == boxCol)) {
             boxTop = boxsList[i];
-        } else if ((currentBoxRow == boxRow + 1) && (currentBoxCol == boxCol)) {
+        } else if ((currentBoxRow - 1 == boxRow) && (currentBoxCol == boxCol)) {
             boxBottom = boxsList[i];
         } else if ((currentBoxRow == boxRow) && (currentBoxCol == boxCol - 1)) {
             boxLeft = boxsList[i];
-        } else if ((currentBoxRow == boxRow) && (currentBoxCol == boxCol + 1)) {
+        } else if ((currentBoxRow == boxRow) && (currentBoxCol - 1 == boxCol)) {
             boxRight = boxsList[i];
         }
     }
