@@ -140,6 +140,21 @@ body{
 }
 .stoneResource:hover, .woodResource:hover, .groundResource:hover, .grassResource:hover{
     opacity: 0.75;
+
+.axe{
+    background-image: url('../img/axe.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.shovel{
+    background-image: url('../img/shovel.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.pickaxe{
+    background-image: url('../img/pickaxe.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 @media screen and (max-width: 576px){
     .tool{
