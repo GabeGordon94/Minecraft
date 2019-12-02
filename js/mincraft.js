@@ -1,4 +1,3 @@
-// testing github!
 let Minecraft = {};
 let board = document.getElementById('gameContainer');
 
@@ -8,6 +7,12 @@ Minecraft.createBoard = function () {
     let backgroundClass;
     let numOfRows = 10;
     let numOfCol = 20;
+    let treeSpots = [3, 9, 10, 14, 18]
+    let treeRoot = treeSpots[Math.floor(Math.random()*treeSpots.length)]
+    let stoneSpots = [1,5,6,7,12,13,16]
+    let firstStoneRoot = stoneSpots[Math.floor(Math.random()*stoneSpots.length)]
+    let secondStoneRoot = stoneSpots[Math.floor(Math.random()*stoneSpots.length)]
+    let thirdStoneRoot = stoneSpots[Math.floor(Math.random()*stoneSpots.length)]
     for (var i = 0; i < numOfRows; i++) {
         let newRow = document.createElement('div');
         newRow.className = 'rows';
@@ -18,8 +23,17 @@ Minecraft.createBoard = function () {
             box.classList.add('box');
             box.setAttribute('row', i);
             box.setAttribute('col', j);
-            if (i == 5 && j == 3) {
+            if (i == 5 && j == treeRoot) {
                 Minecraft.addTree(box);
+            }
+            if (i == 5 && j == firstStoneRoot){
+                Minecraft.addDoubleStone(box)
+            }
+            if (i == 5 && j == secondStoneRoot && firstStoneRoot != secondStoneRoot){
+                Minecraft.addDoubleStone(box)
+            }
+            if (i == 5 && j == thirdStoneRoot && thirdStoneRoot != firstStoneRoot && thirdStoneRoot != secondStoneRoot){
+                Minecraft.addSingleStone(box)
             }
             if (box.classList.contains('grass') || box.classList.contains('ground')) {
                 box.addEventListener('click', Minecraft.clickBox);
@@ -149,6 +163,7 @@ Minecraft.getLeftBox = function (currentBox) {
             return boxsList[i];
         }
     }
+    console.log('here');
 }
 Minecraft.getRightBox = function (currentBox) {
     let boxsList = document.getElementsByClassName('box');
@@ -239,6 +254,7 @@ Minecraft.addTree = function (startingBox) {
     let middleRightLeaf = Minecraft.getRightBox(middleLeaf);
     let middleLeftLeaf = Minecraft.getLeftBox(middleLeaf);
     let topLeaf = Minecraft.getTopBox(middleLeaf);
+    // let testWood = Minecraft.getLeftBox(startingBox)
 
     firstWood.classList.add('wood');
     secondWood.classList.add('wood');
@@ -247,8 +263,21 @@ Minecraft.addTree = function (startingBox) {
     middleRightLeaf.classList.add('leaves');
     middleLeftLeaf.classList.add('leaves');
     topLeaf.classList.add('leaves');
+    // testWood.classList.add("leaves")
 }
 
+Minecraft.addDoubleStone = function (startingBox){
+    let firstStone = startingBox;
+    let secondStone = Minecraft.getTopBox(startingBox);
+
+    firstStone.classList.add('stone');
+    secondStone.classList.add('stone');
+}
+Minecraft.addSingleStone = function (startingBox){
+    let firstStone = startingBox;
+
+    firstStone.classList.add('stone');
+}
 Minecraft.setIntroScreen();
 
 
