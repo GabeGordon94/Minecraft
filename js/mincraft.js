@@ -122,12 +122,28 @@ Minecraft.createToolBox = function () {
     Minecraft.createRow(topToolBox);
     Minecraft.createRow(bottomToolBox);
     Minecraft.tools = document.getElementsByClassName('tool');
-    Minecraft.grassTool = Minecraft.tools[0];
-    Minecraft.grassTool.classList.add('grassTool');
-    Minecraft.groundTool = Minecraft.tools[1];
-    Minecraft.groundTool.classList.add('groundTool');
-    Minecraft.grassTool.innerText = "0";
-    Minecraft.groundTool.innerText = "0";
+    Minecraft.createResources();
 }
-Minecraft.createToolBox();
-Minecraft.createBoard();
+Minecraft.createResources = function(){
+    //stone, wood,
+    Minecraft.grassResource = Minecraft.tools[0];
+    Minecraft.grassResource.classList.add('grassResource');
+    Minecraft.groundResource = Minecraft.tools[1];
+    Minecraft.groundResource.classList.add('groundResource');
+    Minecraft.woodResource = Minecraft.tools[6];
+    Minecraft.woodResource.classList.add('woodResource');
+    Minecraft.stoneResource = Minecraft.tools[7];
+    Minecraft.stoneResource.classList.add('stoneResource');
+    Minecraft.grassResource.innerText = "0";
+    Minecraft.groundResource.innerText = "0";
+    Minecraft.woodResource.innerText = "0";
+    Minecraft.stoneResource.innerText = "0";
+    Minecraft.grass = {
+        quantity: 0,
+    }
+}
+Minecraft.start = function () {
+    Minecraft.createBoard();
+    Minecraft.createToolBox();
+}
+Minecraft.start();
