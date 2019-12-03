@@ -95,6 +95,7 @@ Minecraft.getBoxProperty = function (rowNumber) {
 
 Minecraft.clickBox = function (e) {
     let eventBox = e.target;
+    
     let resource = eventBox.getAttribute('resource');
     let tool = Minecraft.activeTool.getAttribute('tool')
     if (Minecraft.isRemoveable(eventBox)) {
@@ -395,12 +396,12 @@ Minecraft.build = function (box) {
         }
             break;
         case 'stone': {
-            if (resources.bottom == 'stone' || resources.bottom == 'ground' || resources.bottom == 'grass') {
+            if (resources.bottom != 'wood') {
                 legal = true;
             }
         }
             break;
-        case 'wood': if (resources.bottom == 'wood' || resources.bottom == 'ground' || resources.bottom == 'grass') {
+        case 'wood': if (resources.bottom != 'stone') {
             legal = true;
         }
             break;
