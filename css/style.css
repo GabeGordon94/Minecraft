@@ -113,9 +113,9 @@ body{
     align-items: center;
 }
 .tool{
+    border-radius: 5px;
     height: 40px;
     width: calc(100vw / 18);
-    border: 1px solid black;
     margin-right: 10px;
     margin-top: 5px;
     font-size: 20px;
@@ -123,7 +123,12 @@ body{
     background-repeat: no-repeat;
     cursor: pointer;
     background-position: center;
+    transition:transform;
 }
+
+.tool:active{
+    transform:scale(0.97) ;
+} 
 
 /* .sky{
     
@@ -170,32 +175,42 @@ body{
     background-color: rgba(255, 234, 0, 0.8); 
     border: 1px solid rgba(255, 234, 0, 0.8); 
 }
-@media screen and (max-width: 576px){
-    .tool{
-        width: calc(100vw / 8);
-    }
-}
-@media screen and (max-width: 900px){
-    .tool{
-        width: calc(100vw / 12);
-    }
-}
-@media screen and (max-width: 800px){
-    #gameContainer{
-        width:1000px;
-    }
-}
 
 .box:hover{
     opacity: 70%;
 }
 
 .homeResetBtn{
-    background-color:white;
+    background-color:tomato;
     display:flex;
     justify-content: center;
     align-items: center;
+    font-size: 16px;
+    color:white;
+    border-radius: 5px;
+    height: 40px;
+    width: auto;
+    margin-right: 10px;
+    margin-top: 5px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    background-position: center;
+    transform:translateX(-50%);
 }
+
+.homeResetBtn:hover{
+    opacity:80%;
+}
+
+/* .homeBtn{
+    bottom:8%;
+    right:3%;
+}
+.resetBtn{
+    bottom:2%;
+    right:3%;
+} */
 
 .cloud{
     background-color: #EFEEED;
@@ -216,3 +231,24 @@ body{
     background-position: center;
     background-image: url('../img/treasureChest.gif');
 }
+    @media screen and (max-width: 576px){
+        .tool .homeResetBtn{
+            width: calc(100vw / 8);
+        }
+        .homeResetBtn{
+            font-size:5px;
+        }
+    }
+    @media screen and (max-width: 900px){
+        .tool .homeResetBtn{
+            width: calc(100vw / 12);
+        }
+        .homeResetBtn{
+            font-size:10px;
+        }
+    }
+    @media screen and (max-width: 800px){
+        #gameContainer{
+            width:1000px;
+        }
+    }

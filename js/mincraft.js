@@ -254,6 +254,8 @@ Minecraft.createToolBox = function () {
     Minecraft.createToHome();
     Minecraft.createReset();
     Minecraft.resetResources();
+    Minecraft.home.classList.remove('tool');
+    Minecraft.reset.classList.remove('tool');
 }
 Minecraft.createResources = function () {
     Minecraft.grassResource = Minecraft.tools[0];
@@ -317,27 +319,21 @@ Minecraft.createToolsinToolBox = function () {
     Minecraft.activeTool = Minecraft.shovelTool
 }
 Minecraft.createToHome = function () {
-    Minecraft.reset = Minecraft.tools[9];
-    Minecraft.reset.id = 'homeBtn';
-    Minecraft.reset.innerText = "Home";
-    Minecraft.reset.addEventListener('click', Minecraft.start);
-    Minecraft.reset = Minecraft.tools[9];
-    Minecraft.reset.id = 'homeBtn';
-    Minecraft.reset.innerText = "Home";
-    Minecraft.reset.addEventListener('click', Minecraft.start);
-    Minecraft.home = Minecraft.tools[9];
+    Minecraft.home = Minecraft.tools[10];
     Minecraft.home.id = 'homeBtn';
     Minecraft.home.classList.add("homeResetBtn");
     Minecraft.home.innerText = "Home";
     Minecraft.home.addEventListener('click', Minecraft.setIntroScreen);
+    
 }
 Minecraft.createReset = function () {
-    Minecraft.reset = Minecraft.tools[10];
+    Minecraft.reset = Minecraft.tools[11];
     Minecraft.reset.id = 'resetBtn';
     Minecraft.reset.innerText = "Reset";
     Minecraft.reset.classList.add("homeResetBtn");
     Minecraft.reset.innerText = "Reset";
     Minecraft.reset.addEventListener('click', Minecraft.start);
+    
 }
 Minecraft.handleBuild = function (e) {
     Minecraft.chooseTool(e)
