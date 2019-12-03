@@ -167,7 +167,8 @@ body{
 }
 
 .selectedTool{
-    background-color: rgba(255, 234, 0, 0.8) 
+    background-color: rgba(255, 234, 0, 0.8); 
+    border: 1px solid rgba(255, 234, 0, 0.8); 
 }
 @media screen and (max-width: 576px){
     .tool{
