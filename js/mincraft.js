@@ -19,8 +19,8 @@ Minecraft.createBoard = function () {
     let secondStoneRoot = stoneSpots[Math.floor(Math.random() * stoneSpots.length)]
     let thirdStoneRoot = stoneSpots[Math.floor(Math.random() * stoneSpots.length)]
     let cloudPlaceholder;
-    let treasurePlaceholderRow=Math.floor(Math.random()*3)+7;
-    let treasurePlaceholderCol=Math.floor(Math.random()*20);
+    let treasurePlaceholderRow = Math.floor(Math.random() * 3) + 7;
+    let treasurePlaceholderCol = Math.floor(Math.random() * 20);
     let treasurePlaceholder;
     for (var i = 0; i < numOfRows; i++) {
         let newRow = document.createElement('div');
@@ -34,8 +34,8 @@ Minecraft.createBoard = function () {
             box.setAttribute('row', i);
             box.setAttribute('col', j);
             box.addEventListener('click', Minecraft.clickBox)
-            if(i== treasurePlaceholderRow && j == treasurePlaceholderCol){
-                treasurePlaceholder=box;
+            if (i == treasurePlaceholderRow && j == treasurePlaceholderCol) {
+                treasurePlaceholder = box;
             }
             if (i == 1 && j == 4) {
                 cloudPlaceholder = box;
@@ -107,7 +107,7 @@ Minecraft.clickBox = function (e) {
             Minecraft.addResource('ground');
             eventBox.setAttribute('resource', 'sky');
         }
-    }   
+    }
     if (resource == 'wood' && tool == 'axe') {
         eventBox.classList.remove('wood');
         Minecraft.addResource('wood');
@@ -153,7 +153,7 @@ Minecraft.isOpenSpace = function (box) {
 }
 
 Minecraft.isRemoveable = function (box) {
-    if(Minecraft.isBuilding){
+    if (Minecraft.isBuilding) {
         return false;
     }
     let boxRight = Minecraft.getRightBox(box);
@@ -227,11 +227,20 @@ Minecraft.getRightBox = function (currentBox) {
     }
 }
 Minecraft.getResourcesAround = function (box) {
+    let bottom, top, left, right;
+    try { bottom = Minecraft.getBottomBox(box).getAttribute('resource') }
+    catch{ bottom = "nothing" }
+    try { top = Minecraft.getTopBox(box).getAttribute('resource') }
+    catch{ top = "nothing" }
+    try { left = Minecraft.getLeftBox(box).getAttribute('resource') }
+    catch{ left = "nothing" }
+    try { right = Minecraft.getRightBox(box).getAttribute('resource') }
+    catch{ right = "nothing" }
     return {
-        top: Minecraft.getTopBox(box).getAttribute('resource'),
-        bottom: Minecraft.getBottomBox(box).getAttribute('resource'),
-        left: Minecraft.getLeftBox(box).getAttribute('resource'),
-        right: Minecraft.getRightBox(box).getAttribute('resource'),
+        top: top,
+        bottom: bottom,
+        left: left,
+        right: right,
     }
 }
 Minecraft.createRow = function (rowId) {
@@ -272,32 +281,32 @@ Minecraft.createResources = function () {
     Minecraft.groundResource.innerText = Minecraft.resources.ground;
     Minecraft.woodResource.innerText = Minecraft.resources.wood;
     Minecraft.stoneResource.innerText = Minecraft.resources.stone;
-    
+
     Minecraft.tools[0].addEventListener('click', Minecraft.handleBuild)
     Minecraft.tools[1].addEventListener('click', Minecraft.handleBuild)
     Minecraft.tools[6].addEventListener('click', Minecraft.handleBuild)
     Minecraft.tools[7].addEventListener('click', Minecraft.handleBuild)
-    
+
 }
 
-Minecraft.chooseTool = function(e){
+Minecraft.chooseTool = function (e) {
     Minecraft.isBuilding = false;
     Minecraft.activeTool.classList.remove('selectedTool')
     e.target.classList.add('selectedTool')
     Minecraft.activeTool = e.target
 
     let body = document.querySelector('body');
-    body.className= "";
+    body.className = "";
     if (e.target.classList.contains('axe')) {
         body.classList.add('axeCursor');
-        
-    }else if(e.target.classList.contains('pickaxe')){
+
+    } else if (e.target.classList.contains('pickaxe')) {
         body.classList.add('pickaxeCursor');
-    }else if(e.target.classList.contains('shovel')){
+    } else if (e.target.classList.contains('shovel')) {
         body.classList.add('shovelCursor');
-    }else{
-        body.className= "";
-    }  
+    } else {
+        body.className = "";
+    }
 }
 
 Minecraft.createToolsinToolBox = function () {
@@ -359,6 +368,7 @@ Minecraft.resetResources = function () {
 
 Minecraft.removeResource = function (type) {
     if (Minecraft.resources[type] == 0) {
+        Minecraft.isBuilding = false;
         return;
     }
     Minecraft.resources[type] -= 1;
@@ -369,13 +379,21 @@ Minecraft.removeResource = function (type) {
 }
 Minecraft.build = function (box) {
     let legal = false;
-    if(box.getAttribute('resource') != 'sky'){
+    if (box.getAttribute('resource') != 'sky') {
+        return;
+    } else if (Minecraft.resources[Minecraft.currentResource] == 0) {
+        Minecraft.isBuilding = false;
         return;
     }
     let resources = Minecraft.getResourcesAround(box);
     switch (Minecraft.currentResource) {
-        case 'ground': case 'grass': {
+        case 'grass': {
             if (resources.bottom == 'ground') {
+                legal = true;
+            }
+        }
+        case 'ground': {
+            if (resources.bottom == 'ground' || resources.bottom == "nothing") {
                 legal = true;
             }
         }
@@ -494,7 +512,7 @@ Minecraft.addSingleStone = function (startingBox) {
     firstStone.addEventListener('click', Minecraft.clickBox);
 }
 
-Minecraft.addTreasure=function(location){
+Minecraft.addTreasure = function (location) {
     location.classList.add('treasureBox');
 }
 
