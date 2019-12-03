@@ -210,6 +210,9 @@ body{
 .shovelCursor{
     cursor:url('../img/shovel.cur'),auto !important;
 }
+.hammerCursor{
+    cursor:url('../img/hammer.cur'),auto !important;
+}
 
 .treasureBox{
     background-size: contain;
