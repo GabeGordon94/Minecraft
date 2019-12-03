@@ -16,7 +16,7 @@ body{
     justify-content: center;
     align-items: center;
     font-weight: 900;
-    
+    cursor: auto;
 }
 
 .introHeading{
@@ -38,6 +38,7 @@ body{
 }
 
 #tutorialWrapper{
+    cursor:auto;
     height:100vh;
     width:100vw;
     position: absolute;
@@ -180,6 +181,11 @@ body{
 @media screen and (max-width: 900px){
     .tool{
         width: calc(100vw / 12);
+    }
+}
+@media screen and (max-width: 800px){
+    #gameContainer{
+        width:1000px;
     }
 }
 
