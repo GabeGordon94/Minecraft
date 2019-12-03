@@ -211,7 +211,6 @@ Minecraft.getLeftBox = function (currentBox) {
             return boxsList[i];
         }
     }
-    console.log('here');
 }
 Minecraft.getRightBox = function (currentBox) {
     let boxsList = document.getElementsByClassName('box');
