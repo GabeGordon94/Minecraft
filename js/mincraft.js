@@ -395,12 +395,12 @@ Minecraft.build = function (box) {
         }
             break;
         case 'stone': {
-            if (resources.bottom == 'stone' || resources.bottom == 'ground' || resources.bottom == 'grass') {
+            if (resources.bottom != 'wood') {
                 legal = true;
             }
         }
             break;
-        case 'wood': if (resources.bottom == 'wood' || resources.bottom == 'ground' || resources.bottom == 'grass') {
+        case 'wood': if (resources.bottom != 'stone') {
             legal = true;
         }
             break;
