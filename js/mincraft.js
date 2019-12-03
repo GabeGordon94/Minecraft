@@ -33,6 +33,7 @@ Minecraft.createBoard = function () {
             box.classList.add('box');
             box.setAttribute('row', i);
             box.setAttribute('col', j);
+            box.addEventListener('click', Minecraft.clickBox)
             if(i== treasurePlaceholderRow && j == treasurePlaceholderCol){
                 treasurePlaceholder=box;
             }
@@ -95,23 +96,24 @@ Minecraft.getBoxProperty = function (rowNumber) {
 Minecraft.clickBox = function (e) {
     let eventBox = e.target;
     let resource = eventBox.getAttribute('resource');
+    let tool = Minecraft.activeTool.getAttribute('tool')
     if (Minecraft.isRemoveable(eventBox)) {
-        if (resource == 'grass') {
+        if (resource == 'grass' && tool == 'shovel') {
             eventBox.classList.remove('grass');
             Minecraft.addResource('grass');
             eventBox.setAttribute('resource', 'sky');
-        } else if (resource == 'ground') {
+        } else if (resource == 'ground' && tool == 'shovel') {
             eventBox.classList.remove('ground');
             Minecraft.addResource('ground');
             eventBox.setAttribute('resource', 'sky');
         }
     }   
-    if (resource == 'wood') {
+    if (resource == 'wood' && tool == 'axe') {
         eventBox.classList.remove('wood');
         Minecraft.addResource('wood');
         eventBox.setAttribute('resource', 'sky');
     }
-    if (resource == 'stone') {
+    if (resource == 'stone' && tool == 'pickaxe') {
         eventBox.classList.remove('stone');
         Minecraft.addResource('stone');
         eventBox.setAttribute('resource', 'sky');
@@ -271,12 +273,16 @@ Minecraft.createResources = function () {
     Minecraft.groundResource.innerText = Minecraft.resources.ground;
     Minecraft.woodResource.innerText = Minecraft.resources.wood;
     Minecraft.stoneResource.innerText = Minecraft.resources.stone;
-    for (let i = 0; i < Minecraft.tools.length; i++) {
-        Minecraft.tools[i].addEventListener('click', Minecraft.handleBuild)
-    }
+    
+    Minecraft.tools[0].addEventListener('click', Minecraft.handleBuild)
+    Minecraft.tools[1].addEventListener('click', Minecraft.handleBuild)
+    Minecraft.tools[6].addEventListener('click', Minecraft.handleBuild)
+    Minecraft.tools[7].addEventListener('click', Minecraft.handleBuild)
+    
 }
 
 Minecraft.chooseTool = function(e){
+    Minecraft.isBuilding = false;
     Minecraft.activeTool.classList.remove('selectedTool')
     e.target.classList.add('selectedTool')
     Minecraft.activeTool = e.target
@@ -297,16 +303,19 @@ Minecraft.chooseTool = function(e){
 
 Minecraft.createToolsinToolBox = function () {
     Minecraft.axeTool = Minecraft.tools[3];
-    Minecraft.axeTool.classList.add('axe', 'selectedTool');
+    Minecraft.axeTool.classList.add('axe');
+    Minecraft.axeTool.setAttribute('tool', 'axe')
     Minecraft.axeTool.addEventListener('click', Minecraft.chooseTool)
     Minecraft.shovelTool = Minecraft.tools[4];
-    Minecraft.shovelTool.classList.add('shovel');
+    Minecraft.shovelTool.classList.add('shovel', 'selectedTool');
+    Minecraft.shovelTool.setAttribute('tool', 'shovel')
     Minecraft.shovelTool.addEventListener('click', Minecraft.chooseTool)
     Minecraft.pickaxeTool = Minecraft.tools[5];
     Minecraft.pickaxeTool.classList.add('pickaxe');
+    Minecraft.pickaxeTool.setAttribute('tool', 'pickaxe')
     Minecraft.pickaxeTool.addEventListener('click', Minecraft.chooseTool)
 
-    Minecraft.activeTool = Minecraft.axeTool
+    Minecraft.activeTool = Minecraft.shovelTool
 }
 Minecraft.createToHome = function () {
     Minecraft.reset = Minecraft.tools[9];
@@ -332,13 +341,9 @@ Minecraft.createReset = function () {
     Minecraft.reset.addEventListener('click', Minecraft.start);
 }
 Minecraft.handleBuild = function (e) {
+    Minecraft.chooseTool(e)
     Minecraft.currentResource = e.target.getAttribute('resource');
-    switch (Minecraft.currentResource) {
-        case 'wood': case 'stone': case 'grass': case 'ground': {
-            Minecraft.isBuilding = true;
-        }
-            break;
-    }
+    Minecraft.isBuilding = true;
 }
 Minecraft.addResource = function (type) {
     Minecraft.resources[type] += 1;
@@ -393,7 +398,6 @@ Minecraft.build = function (box) {
     box.setAttribute('resource', Minecraft.currentResource)
     box.classList.add(Minecraft.currentResource);
     Minecraft.removeResource(Minecraft.currentResource);
-    Minecraft.isBuilding = false;
     Minecraft.chosenResource = false;
 }
 Minecraft.start = function () {

@@ -121,6 +121,7 @@ body{
     background-size: cover;
     background-repeat: no-repeat;
     cursor: pointer;
+    background-position: center;
 }
 
 /* .sky{
@@ -149,20 +150,15 @@ body{
 .axe{
     background-image: url('../img/diamond_axe.png');
     background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
+    
 }
 .shovel{
     background-image: url('../img/diamond_shovel.png');
     background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
 }
 .pickaxe{
     background-image: url('../img/diamond_hoe.png');
     background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
 }
 
 .axe:hover, .shovel:hover, .pickaxe:hover{
@@ -170,7 +166,7 @@ body{
 }
 
 .selectedTool{
-    background-color: rgba(255, 234, 0, 0.8)
+    background-color: rgba(255, 234, 0, 0.8) 
 }
 @media screen and (max-width: 576px){
     .tool{
