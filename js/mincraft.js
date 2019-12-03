@@ -95,6 +95,7 @@ Minecraft.getBoxProperty = function (rowNumber) {
 
 Minecraft.clickBox = function (e) {
     let eventBox = e.target;
+    
     let resource = eventBox.getAttribute('resource');
     let tool = Minecraft.activeTool.getAttribute('tool')
     if (Minecraft.isRemoveable(eventBox)) {
