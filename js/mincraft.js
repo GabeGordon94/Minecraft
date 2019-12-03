@@ -98,11 +98,7 @@ Minecraft.clickBox = function (e) {
             Minecraft.addResource('ground');
             eventBox.setAttribute('resource', 'sky');
         }
-    }
-    if (Minecraft.isBuilding) {
-        Minecraft.build(eventBox);
-    }
-
+    }   
     if (resource == 'wood') {
         eventBox.classList.remove('wood');
         Minecraft.addResource('wood');
@@ -112,6 +108,9 @@ Minecraft.clickBox = function (e) {
         eventBox.classList.remove('stone');
         Minecraft.addResource('stone');
         eventBox.setAttribute('resource', 'sky');
+    }
+    if (Minecraft.isBuilding) {
+        Minecraft.build(eventBox);
     }
 }
 
@@ -145,7 +144,9 @@ Minecraft.isOpenSpace = function (box) {
 }
 
 Minecraft.isRemoveable = function (box) {
-
+    if(Minecraft.isBuilding){
+        return false;
+    }
     let boxRight = Minecraft.getRightBox(box);
     let boxLeft = Minecraft.getLeftBox(box);
     let boxTop = Minecraft.getTopBox(box);
@@ -355,6 +356,9 @@ Minecraft.removeResource = function (type) {
 }
 Minecraft.build = function (box) {
     let legal = false;
+    if(box.getAttribute('resource') != 'sky'){
+        return;
+    }
     let resources = Minecraft.getResourcesAround(box);
     switch (Minecraft.currentResource) {
         case 'ground': case 'grass': {
@@ -364,12 +368,12 @@ Minecraft.build = function (box) {
         }
             break;
         case 'stone': {
-            if (resources.bottom == 'stone' || resources.bottom == 'ground') {
+            if (resources.bottom == 'stone' || resources.bottom == 'ground' || resources.bottom == 'grass') {
                 legal = true;
             }
         }
             break;
-        case 'wood': if (resources.bottom == 'wood' || resources.bottom == 'ground') {
+        case 'wood': if (resources.bottom == 'wood' || resources.bottom == 'ground' || resources.bottom == 'grass') {
             legal = true;
         }
             break;
