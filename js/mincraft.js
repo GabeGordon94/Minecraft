@@ -19,7 +19,7 @@ Minecraft.createBoard = function () {
     let secondStoneRoot = stoneSpots[Math.floor(Math.random() * stoneSpots.length)]
     let thirdStoneRoot = stoneSpots[Math.floor(Math.random() * stoneSpots.length)]
     let cloudPlaceholder;
-    let treasurePlaceholderRow=Math.ceil(Math.random()*4)+5;
+    let treasurePlaceholderRow=Math.floor(Math.random()*3)+7;
     let treasurePlaceholderCol=Math.floor(Math.random()*20);
     let treasurePlaceholder;
     for (var i = 0; i < numOfRows; i++) {
