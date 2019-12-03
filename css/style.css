@@ -130,10 +130,6 @@ body{
     transform:scale(0.97) ;
 } 
 
-/* .sky{
-    
-} */
-
 .grass, .grassResource{
     background-image: url('../img/grass.jpg');
 }
@@ -185,17 +181,14 @@ body{
     display:flex;
     justify-content: center;
     align-items: center;
-    font-size: 16px;
+    font-size: 100%;
     color:white;
     border-radius: 5px;
     height: 40px;
-    width: auto;
+    width: calc(100vw / 18);
     margin-right: 10px;
     margin-top: 5px;
-    background-size: cover;
-    background-repeat: no-repeat;
     cursor: pointer;
-    background-position: center;
     transform:translateX(-50%);
 }
 
@@ -203,14 +196,6 @@ body{
     opacity:80%;
 }
 
-/* .homeBtn{
-    bottom:8%;
-    right:3%;
-}
-.resetBtn{
-    bottom:2%;
-    right:3%;
-} */
 
 .cloud{
     background-color: #EFEEED;
@@ -252,7 +237,6 @@ body{
             width:1000px;
         }
     }
-
     @media screen and (max-width: 1000px){
         .tutorialHeader {
             font-size: 42px;
