@@ -268,17 +268,6 @@ Minecraft.createResources = function () {
     }
 }
 
-// Minecraft.checkActiveTool = function(eventBox){
-//     for (let i = 0; i < eventBox.classList.length; i++){
-//         if (Minecraft.activeTool.includes(eventBox.classList[i])){
-//             Minecraft.toolCanBuild = true;
-//             console.log('here')
-//         } else {
-//             Minecraft.toolCanBuild = false;
-//         }
-//     }
-// }
-
 Minecraft.chooseTool = function(e){
     Minecraft.activeTool.classList.remove('selectedTool')
     e.target.classList.add('selectedTool')

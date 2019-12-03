@@ -164,6 +164,10 @@ body{
     background-position: center;
 }
 
+.axe:hover, .shovel:hover, .pickaxe:hover{
+    background-color: rgba(255, 234, 0, 0.3)
+}
+
 .selectedTool{
     background-color: rgba(255, 234, 0, 0.8)
 }
