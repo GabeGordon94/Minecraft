@@ -1,6 +1,7 @@
 body{
     margin:0;
     font-family: 'Tomorrow', sans-serif;
+    cursor:url('../img/shovel.cur'),auto;
 }
 #intro{
     height:100vh;
@@ -19,7 +20,7 @@ body{
 }
 
 .introHeading{
-    width:500px;
+    width:100%;
     height: 100px;
     margin-bottom:20px;
     background-image: url(../img/Minecraft_logo.png);
@@ -86,7 +87,7 @@ body{
 }
 .box{
     width:5%;
-    background-size: cover;
+    background-size: cover !important;
     background-repeat: no-repeat;
 }
 
@@ -131,7 +132,7 @@ body{
 }
 
 .ground, .groundResource{
-    background-image: url('../img/ground.jpg');
+    background-image: url('../img/ground.jpg') !important;
 }
 .wood, .woodResource{
     background-image: url('../img/wood.jpg');
@@ -191,4 +192,20 @@ body{
 
 .cloud{
     background-color: #EFEEED;
+}
+
+.axeCursor{
+    cursor:url('../img/axe.cur'),auto !important;
+}
+.pickaxeCursor{
+    cursor:url('../img/pickaxe.cur'),auto !important;
+}
+.shovelCursor{
+    cursor:url('../img/shovel.cur'),auto !important;
+}
+
+.treasureBox{
+    background-size: contain;
+    background-position: center;
+    background-image: url('../img/treasureChest.gif');
 }

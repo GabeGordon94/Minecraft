@@ -1,0 +1,275 @@
+[33mcommit db43ff267b8503392e9a839b333b000269611795[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Merge: 6d1a0fe 8564600
+Author: jackgreen <jack_s_green@me.com>
+Date:   Mon Dec 2 18:46:10 2019 +0200
+
+    Merge branch 'master' of https://github.com/GabeGordon94/Minecraft
+
+[33mcommit 6d1a0fe2ed6cb8cc20df29969ad2fa26185854c6[m
+Merge: 4bf36b4 e814c01
+Author: jackgreen <jack_s_green@me.com>
+Date:   Mon Dec 2 18:43:06 2019 +0200
+
+    Merge branch 'master' of https://github.com/GabeGordon94/Minecraft
+
+[33mcommit 856460051b456b2cdb47840f70b9152b91ed01ca[m
+Author: Gabriel Gordon <gabegor94@gmail.com>
+Date:   Mon Dec 2 18:41:37 2019 +0200
+
+    added style to cloud
+
+[33mcommit 8f2998257992c814cbec1b79c1209eaa326303d4[m
+Merge: ffd2912 e814c01
+Author: Gabriel Gordon <gabegor94@gmail.com>
+Date:   Mon Dec 2 18:41:22 2019 +0200
+
+    Merge branch 'master' of https://github.com/GabeGordon94/Minecraft
+
+[33mcommit ffd29120d8f3759ada6b3512c52cf0a53cd43a6a[m
+Author: Gabriel Gordon <gabegor94@gmail.com>
+Date:   Mon Dec 2 18:41:06 2019 +0200
+
+    added style to cloud
+
+[33mcommit 4bf36b46bb77cfaf4ee5e5a4ee83bb438da4cc30[m
+Author: jackgreen <jack_s_green@me.com>
+Date:   Mon Dec 2 18:29:40 2019 +0200
+
+    working on tool functions
+
+[33mcommit e814c01e07cdbab9cc56c9494c25637f79e25363[m
+Merge: 1630eb2 1309fe2
+Author: Yinon Vahab <yinonv@gmail.com>
+Date:   Mon Dec 2 18:28:45 2019 +0200
+
+    Merge branch 'master' of https://github.com/GabeGordon94/Minecraft
+
+[33mcommit 1630eb22560f91be6249d2e2f3288b7260985cd7[m
+Author: Yinon Vahab <yinonv@gmail.com>
+Date:   Mon Dec 2 18:28:36 2019 +0200
+
+    no change
+
+[33mcommit 1309fe2e0f5d66a6808d6cc4fdf87814e54abb73[m
+Author: Gabriel Gordon <gabegor94@gmail.com>
+Date:   Mon Dec 2 18:16:09 2019 +0200
+
+    added ugly cloud
+
+[33mcommit d00946a354e5b5f63ba55c9aee125deabfd38d61[m
+Merge: fc6729d e74b147
+Author: Yinon Vahab <yinonv@gmail.com>
+Date:   Mon Dec 2 18:13:20 2019 +0200
+
+    Merge branch 'master' of https://github.com/GabeGordon94/Minecraft
+
+[33mcommit fc6729d9a28df706ef45a209224142b16235958c[m
+Author: Yinon Vahab <yinonv@gmail.com>
+Date:   Mon Dec 2 18:04:11 2019 +0200
+
+    fixed building
+
+[33mcommit e74b14703226fb9eaf42754bc2289a4a566db2ca[m
+Author: Gabriel Gordon <gabegor94@gmail.com>
+Date:   Mon Dec 2 17:44:57 2019 +0200
+
+    fixed home and reset buttons and styled
+
+[33mcommit fc5ec8c2cd5c7205c97b0b6df6a0f85689ddb742[m
+Merge: 483d5bb bc7180c
+Author: Gabriel Gordon <gabegor94@gmail.com>
+Date:   Mon Dec 2 17:44:46 2019 +0200
+
+    Merge branch 'master' of https://github.com/GabeGordon94/Minecraft
+
+[33mcommit 483d5bb9dedd6928d33a7b947004d8a1faa1b780[m
+Author: Gabriel Gordon <gabegor94@gmail.com>
+Date:   Mon Dec 2 17:44:04 2019 +0200
+
+    fixed home and reset buttons and styled
+
+[33mcommit 7017ca592439c98c882a4945fce2075311262192[m
+Merge: b61e67f bc7180c
+Author: Yinon Vahab <yinonv@gmail.com>
+Date:   Mon Dec 2 17:10:32 2019 +0200
+
+    Merge branch 'master' of https://github.com/GabeGordon94/Minecraft
+
+[33mcommit b61e67fffc9be6e908e31538cec619b7fdd6fbd6[m
+Author: Yinon Vahab <yinonv@gmail.com>
+Date:   Mon Dec 2 17:10:23 2019 +0200
+
+    no change
+
+[33mcommit bc7180ca3496ec0387e144b277f0000332ff30f5[m
+Author: jackgreen <jack_s_green@me.com>
+Date:   Mon Dec 2 17:09:12 2019 +0200
+
+    no change
+
+[33mcommit 20523cee19093844153da13cbfbf16cab61cc765[m
+Merge: 9c91922 db77968
+Author: jackgreen <jack_s_green@me.com>
+Date:   Mon Dec 2 17:08:40 2019 +0200
+
+    Merge branch 'master' of https://github.com/GabeGordon94/Minecraft
+
+[33mcommit 9c91922e110eff436252877809f6b9713a429af5[m
+Merge: 660e572 85b54d3
+Author: jackgreen <jack_s_green@me.com>
+Date:   Mon Dec 2 17:04:37 2019 +0200
+
+    tidying up css
+
+[33mcommit db77968c9ea87f958707fc22ac4713880615d624[m
+Merge: 567d953 85b54d3
+Author: Yinon Vahab <yinonv@gmail.com>
+Date:   Mon Dec 2 17:04:06 2019 +0200
+
+    Merge branch 'master' of https://github.com/GabeGordon94/Minecraft
+
+[33mcommit 567d953658f3ed50dfc6c17c0ea5f60f8a2aafd9[m
+Author: Yinon Vahab <yinonv@gmail.com>
+Date:   Mon Dec 2 17:03:53 2019 +0200
+
+    added getBoxes function
+
+[33mcommit 660e5728eab13b50a0e60ca75dc790414122355a[m
+Author: jackgreen <jack_s_green@me.com>
+Date:   Mon Dec 2 17:01:55 2019 +0200
+
+    tidying up css
+
+[33mcommit 85b54d3873d26ce77be9e73fbf11d16f0d8f5e3f[m
+Author: Gabriel Gordon <gabegor94@gmail.com>
+Date:   Mon Dec 2 17:00:36 2019 +0200
+
+    adding reset and home buttons
+
+[33mcommit d75b1e205ba67cc37e4cee43e92e15f4b31cb6e7[m
+Merge: 40e0f0b 2f6bd84
+Author: Gabriel Gordon <gabegor94@gmail.com>
+Date:   Mon Dec 2 16:04:51 2019 +0200
+
+    Merge branch 'master' of https://github.com/GabeGordon94/Minecraft
+
+[33mcommit 40e0f0bda7aca253a6e9ba0a73980d15024d0281[m
+Author: Gabriel Gordon <gabegor94@gmail.com>
+Date:   Mon Dec 2 16:04:21 2019 +0200
+
+    merge error
+
+[33mcommit 2f6bd84364586bd28b931d98faacf25010f126eb[m
+Merge: 6830ca3 93ea892
+Author: jackgreen <jack_s_green@me.com>
+Date:   Mon Dec 2 16:02:41 2019 +0200
+
+    Merge branch 'master' of https://github.com/GabeGordon94/Minecraft
+
+[33mcommit 6830ca39eb272950bc3baf835282696df865176d[m
+Author: jackgreen <jack_s_green@me.com>
+Date:   Mon Dec 2 16:00:39 2019 +0200
+
+    updated header logo
+
+[33mcommit 93ea892d20b5c28cba1fb0b2edfa79e2d792bde8[m
+Author: Gabriel Gordon <gabegor94@gmail.com>
+Date:   Mon Dec 2 15:58:34 2019 +0200
+
+    merge error
+
+[33mcommit 4e0407b6f76710b01506a9d2228aeea59c5c0654[m
+Merge: f73c13b 6688de6
+Author: Gabriel Gordon <gabegor94@gmail.com>
+Date:   Mon Dec 2 15:58:14 2019 +0200
+
+    fixed bug and added tools
+
+[33mcommit f73c13b2b9796963544a3daf42f83c62fb9448a2[m
+Author: Gabriel Gordon <gabegor94@gmail.com>
+Date:   Mon Dec 2 15:56:21 2019 +0200
+
+    fixed bug and added tools
+
+[33mcommit 6688de6e72f0cc165db13c99bd4f03c3ed42a5c3[m
+Merge: 2cdd6b0 f9d5980
+Author: Yinon Vahab <yinonv@gmail.com>
+Date:   Mon Dec 2 15:55:09 2019 +0200
+
+    Merge branch 'master' of https://github.com/GabeGordon94/Minecraft
+
+[33mcommit 2cdd6b0f50f547328f24f70b58dd899000d4cf6b[m
+Author: Yinon Vahab <yinonv@gmail.com>
+Date:   Mon Dec 2 15:50:11 2019 +0200
+
+    added building option
+
+[33mcommit f9d59807db4a9872fd2daefdee94c11615605507[m
+Merge: 80d1101 17fd0b0
+Author: Gabriel Gordon <gabegor94@gmail.com>
+Date:   Mon Dec 2 15:47:57 2019 +0200
+
+    fixed bug
+
+[33mcommit 80d11019a3f602b502b1dfee3d258487f7ff9371[m
+Author: Gabriel Gordon <gabegor94@gmail.com>
+Date:   Mon Dec 2 15:46:44 2019 +0200
+
+    fixed bug
+
+[33mcommit 17fd0b0be52ee79000cc4d621010d70a3fc7675c[m
+Author: jackgreen <jack_s_green@me.com>
+Date:   Mon Dec 2 15:45:33 2019 +0200
+
+    tree and stone random placement
+
+[33mcommit 0a7517a091d11ee501fcc4193b1d1631af28bc9d[m
+Merge: c4035a4 257a1e8
+Author: Yinon Vahab <yinonv@gmail.com>
+Date:   Mon Dec 2 14:35:52 2019 +0200
+
+    Merge branch 'master' of https://github.com/GabeGordon94/Minecraft
+
+[33mcommit c4035a44076b2bf96006dd285cc0e4ddb686421d[m
+Author: Yinon Vahab <yinonv@gmail.com>
+Date:   Mon Dec 2 14:33:00 2019 +0200
+
+    stored images localy
+
+[33mcommit 257a1e83ce4c660a88809b0b9488b9bf3df03d77[m
+Author: Gabriel Gordon <gabegor94@gmail.com>
+Date:   Mon Dec 2 14:32:29 2019 +0200
+
+    added tree
+
+[33mcommit 477427c2c961892210c68e8a1f37860414e39767[m
+Author: Gabriel Gordon <gabegor94@gmail.com>
+Date:   Mon Dec 2 13:52:49 2019 +0200
+
+    adding toolbox update feature
+
+[33mcommit 49eab74e4a05541a0b33ff85f5d3e3c468ae98f0[m
+Merge: 783995f 52e38a2
+Author: Gabriel Gordon <gabegor94@gmail.com>
+Date:   Mon Dec 2 13:40:15 2019 +0200
+
+    Merge branch 'master' of https://github.com/GabeGordon94/Minecraft
+
+[33mcommit 783995fec263569f854d075125cdcb294bca6a4f[m
+Author: Gabriel Gordon <gabegor94@gmail.com>
+Date:   Mon Dec 2 13:39:23 2019 +0200
+
+    remove grass ground adds to resources and updates toolbox
+
+[33mcommit 52e38a281c1de65b933a81433f6cd388f53d1108[m
+Author: jackgreen <jack_s_green@me.com>
+Date:   Mon Dec 2 13:33:57 2019 +0200
+
+    combining home screen with up to date gameplay
+
+[33mcommit 735f322c07a8ce3ad680734e2ca8cb5be102e174[m
+Merge: b76137f a599335
+Author: Gabriel Gordon <gabegor94@gmail.com>
+Date:   Mon Dec 2 13:14:28 2019 +0200
+
+    Merge branch 'ma

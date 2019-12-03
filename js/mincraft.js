@@ -19,6 +19,9 @@ Minecraft.createBoard = function () {
     let secondStoneRoot = stoneSpots[Math.floor(Math.random() * stoneSpots.length)]
     let thirdStoneRoot = stoneSpots[Math.floor(Math.random() * stoneSpots.length)]
     let cloudPlaceholder;
+    let treasurePlaceholderRow=Math.floor(Math.random()*3)+7;
+    let treasurePlaceholderCol=Math.floor(Math.random()*20);
+    let treasurePlaceholder;
     for (var i = 0; i < numOfRows; i++) {
         let newRow = document.createElement('div');
         newRow.className = 'rows';
@@ -30,8 +33,11 @@ Minecraft.createBoard = function () {
             box.classList.add('box');
             box.setAttribute('row', i);
             box.setAttribute('col', j);
-            if(i==1 && j == 4){
-                cloudPlaceholder=box;
+            if(i== treasurePlaceholderRow && j == treasurePlaceholderCol){
+                treasurePlaceholder=box;
+            }
+            if (i == 1 && j == 4) {
+                cloudPlaceholder = box;
             }
             if (i == 5 && j == treeRoot) {
                 Minecraft.addTree(box);
@@ -53,6 +59,7 @@ Minecraft.createBoard = function () {
         board.appendChild(newRow);
     }
     Minecraft.createCloud(cloudPlaceholder);
+    Minecraft.addTreasure(treasurePlaceholder);
     Minecraft.resources = {
         wood: 0,
         stone: 0,
@@ -280,10 +287,23 @@ Minecraft.createResources = function () {
 //     }
 // }
 
-Minecraft.chooseTool = function(e){
+Minecraft.chooseTool = function (e) {
     Minecraft.activeTool.classList.remove('selectedTool')
     e.target.classList.add('selectedTool')
     Minecraft.activeTool = e.target
+
+    let body = document.querySelector('body');
+    body.className= "";
+    if (e.target.classList.contains('axe')) {
+        body.classList.add('axeCursor');
+        
+    }else if(e.target.classList.contains('pickaxe')){
+        body.classList.add('pickaxeCursor');
+    }else if(e.target.classList.contains('shovel')){
+        body.classList.add('shovelCursor');
+    }else{
+        body.className= "";
+    }  
 }
 
 Minecraft.createToolsinToolBox = function () {
@@ -443,14 +463,14 @@ Minecraft.addTree = function (startingBox) {
     topLeftLeft.classList.add('leaves');
 }
 Minecraft.createCloud = function (startingBox) {
-    let middleCloud=startingBox;
-    let leftCloud=Minecraft.getLeftBox(middleCloud);
-    let rightCloud=Minecraft.getRightBox(middleCloud);
-    let farRightCloud=Minecraft.getRightBox(rightCloud);
-    let topCloud=Minecraft.getTopBox(middleCloud);
-    let topRightCloud=Minecraft.getRightBox(topCloud);
-    let bottomCloud=Minecraft.getBottomBox(middleCloud);
-    let bottomRightCloud=Minecraft.getRightBox(bottomCloud);
+    let middleCloud = startingBox;
+    let leftCloud = Minecraft.getLeftBox(middleCloud);
+    let rightCloud = Minecraft.getRightBox(middleCloud);
+    let farRightCloud = Minecraft.getRightBox(rightCloud);
+    let topCloud = Minecraft.getTopBox(middleCloud);
+    let topRightCloud = Minecraft.getRightBox(topCloud);
+    let bottomCloud = Minecraft.getBottomBox(middleCloud);
+    let bottomRightCloud = Minecraft.getRightBox(bottomCloud);
 
     middleCloud.classList.add('cloud');
     leftCloud.classList.add('cloud');
@@ -481,6 +501,11 @@ Minecraft.addSingleStone = function (startingBox) {
     firstStone.setAttribute('resource', 'stone');
     firstStone.addEventListener('click', Minecraft.clickBox);
 }
+
+Minecraft.addTreasure=function(location){
+    location.classList.add('treasureBox');
+}
+
 Minecraft.setIntroScreen();
 
 
