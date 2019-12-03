@@ -175,6 +175,20 @@ body{
         width: calc(100vw / 8);
     }
 }
+
+@media screen and (max-width: 1000px){
+    .tutorialHeader {
+        font-size: 42px;
+    }
+    .tutorialMainText{
+        font-size: 14px;
+        width: 91%;
+    }
+    .tutorialBox{
+        width: 300px;
+        height: 650px;
+    }
+}
 @media screen and (max-width: 900px){
     .tool{
         width: calc(100vw / 12);
