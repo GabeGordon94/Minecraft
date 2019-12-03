@@ -95,7 +95,6 @@ Minecraft.getBoxProperty = function (rowNumber) {
 
 Minecraft.clickBox = function (e) {
     let eventBox = e.target;
-    
     let resource = eventBox.getAttribute('resource');
     let tool = Minecraft.activeTool.getAttribute('tool')
     if (Minecraft.isRemoveable(eventBox)) {
@@ -308,7 +307,7 @@ Minecraft.chooseTool = function (e) {
     } else if (e.target.classList.contains('shovel')) {
         body.classList.add('shovelCursor');
     } else {
-        body.classList.add('hammerCursor');
+        body.className = "";
     }
 }
 
@@ -396,12 +395,12 @@ Minecraft.build = function (box) {
         }
             break;
         case 'stone': {
-            if (resources.bottom != 'wood') {
+            if (resources.bottom == 'stone' || resources.bottom == 'ground' || resources.bottom == 'grass' || resources.bottom == 'nothing') {
                 legal = true;
             }
         }
             break;
-        case 'wood': if (resources.bottom != 'stone') {
+        case 'wood': if (resources.bottom == 'wood' || resources.bottom == 'ground' || resources.bottom == 'grass' || resources.bottom == 'nothing') {
             legal = true;
         }
             break;
