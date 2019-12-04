@@ -11,7 +11,6 @@ Minecraft.createBoard = function () {
     let numOfRows = 10;
 
     boxElem = document.querySelector('.box')
-    //console.log(boxElem.css);
     let numOfCol = 20;
     let treeSpots = [3, 9, 10, 14, 18]
     let treeRoot = treeSpots[Math.floor(Math.random() * treeSpots.length)]
@@ -552,6 +551,17 @@ Minecraft.addSingleStone = function (startingBox) {
 
 Minecraft.addTreasure = function (location) {
     location.classList.add('treasureBox');
+}
+
+Minecraft.changeTheme = function(){
+    if(Minecraft.isHD){
+        document.querySelector('body').style.cursor="url(./img/shovel.cur),auto";
+        Minecraft.isHD=false;
+    }else{
+        Minecraft.isHD=true;
+        document.querySelector('body').style.cursor="url(./img/shovelHD.cur),auto";
+    }
+    Minecraft.start();
 }
 
 Minecraft.setIntroScreen();
