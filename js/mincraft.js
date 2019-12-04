@@ -292,19 +292,19 @@ Minecraft.createToolBox = function () {
 }
 Minecraft.createResources = function () {
     Minecraft.grassResource = Minecraft.tools[0];
-    Minecraft.grassResource.classList.add('grassResource');
+    Minecraft.addClass(Minecraft.grassResource,'grassResource');
     Minecraft.grassResource.setAttribute('resource', 'grass');
     Minecraft.grassResource.setAttribute('title', 'grass');
     Minecraft.groundResource = Minecraft.tools[1];
-    Minecraft.groundResource.classList.add('groundResource');
+    Minecraft.addClass(Minecraft.groundResource,'groundResource');
     Minecraft.groundResource.setAttribute('resource', 'ground');
     Minecraft.groundResource.setAttribute('title', 'ground');
     Minecraft.woodResource = Minecraft.tools[6];
-    Minecraft.woodResource.classList.add('woodResource');
+    Minecraft.addClass(Minecraft.woodResource,'woodResource');
     Minecraft.woodResource.setAttribute('resource', 'wood');
     Minecraft.woodResource.setAttribute('title', 'wood');
     Minecraft.stoneResource = Minecraft.tools[7];
-    Minecraft.stoneResource.classList.add('stoneResource');
+    Minecraft.addClass(Minecraft.stoneResource,'stoneResource');
     Minecraft.stoneResource.setAttribute('resource', 'stone');
     Minecraft.stoneResource.setAttribute('title', 'stone');
     Minecraft.grassResource.innerText = Minecraft.resources.grass;

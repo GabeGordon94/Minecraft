@@ -160,7 +160,7 @@ body{
     background-image: url('../img/leaves.png') !important;
 }
 .leavesHD, .leavesResourceHD{
-    background-image: url('../img/leavesHD.png') !important;
+    background-image: url('../img/leavesHD.jpg') !important;
 }
 .stoneResource:hover, .woodResource:hover, .groundResource:hover, .grassResource:hover
 .stoneResourceHD:hover, .woodResourceHD:hover, .groundResourceHD:hover, .grassResourceHD:hover{
