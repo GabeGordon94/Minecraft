@@ -421,6 +421,8 @@ Minecraft.build = function (box) {
     Minecraft.chosenResource = false;
 }
 Minecraft.start = function () {
+    let body = document.querySelector('body');
+    body.className='';
     Minecraft.createBoard();
     Minecraft.createToolBox();
 }
