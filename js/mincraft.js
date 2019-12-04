@@ -307,7 +307,7 @@ Minecraft.chooseTool = function (e) {
     } else if (e.target.classList.contains('shovel')) {
         body.classList.add('shovelCursor');
     } else {
-        body.className = "";
+        body.classList.add('hammerCursor');
     }
 }
 
