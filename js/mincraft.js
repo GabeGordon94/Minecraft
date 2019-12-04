@@ -270,15 +270,19 @@ Minecraft.createResources = function () {
     Minecraft.grassResource = Minecraft.tools[0];
     Minecraft.grassResource.classList.add('grassResource');
     Minecraft.grassResource.setAttribute('resource', 'grass');
+    Minecraft.grassResource.setAttribute('title', 'grass');
     Minecraft.groundResource = Minecraft.tools[1];
     Minecraft.groundResource.classList.add('groundResource');
     Minecraft.groundResource.setAttribute('resource', 'ground');
+    Minecraft.groundResource.setAttribute('title', 'ground');
     Minecraft.woodResource = Minecraft.tools[6];
     Minecraft.woodResource.classList.add('woodResource');
     Minecraft.woodResource.setAttribute('resource', 'wood');
+    Minecraft.woodResource.setAttribute('title', 'wood');
     Minecraft.stoneResource = Minecraft.tools[7];
     Minecraft.stoneResource.classList.add('stoneResource');
     Minecraft.stoneResource.setAttribute('resource', 'stone');
+    Minecraft.stoneResource.setAttribute('title', 'stone');
     Minecraft.grassResource.innerText = Minecraft.resources.grass;
     Minecraft.groundResource.innerText = Minecraft.resources.ground;
     Minecraft.woodResource.innerText = Minecraft.resources.wood;
@@ -315,14 +319,17 @@ Minecraft.createToolsinToolBox = function () {
     Minecraft.axeTool = Minecraft.tools[3];
     Minecraft.axeTool.classList.add('axe');
     Minecraft.axeTool.setAttribute('tool', 'axe')
+    Minecraft.axeTool.setAttribute('title', 'axe')
     Minecraft.axeTool.addEventListener('click', Minecraft.chooseTool)
     Minecraft.shovelTool = Minecraft.tools[4];
     Minecraft.shovelTool.classList.add('shovel', 'selectedTool');
     Minecraft.shovelTool.setAttribute('tool', 'shovel')
+    Minecraft.shovelTool.setAttribute('title', 'shovel')
     Minecraft.shovelTool.addEventListener('click', Minecraft.chooseTool)
     Minecraft.pickaxeTool = Minecraft.tools[5];
     Minecraft.pickaxeTool.classList.add('pickaxe');
     Minecraft.pickaxeTool.setAttribute('tool', 'pickaxe')
+    Minecraft.pickaxeTool.setAttribute('title', 'pickaxe')
     Minecraft.pickaxeTool.addEventListener('click', Minecraft.chooseTool)
 
     Minecraft.activeTool = Minecraft.shovelTool
@@ -414,6 +421,8 @@ Minecraft.build = function (box) {
     Minecraft.chosenResource = false;
 }
 Minecraft.start = function () {
+    let body = document.querySelector('body');
+    body.className='';
     Minecraft.createBoard();
     Minecraft.createToolBox();
 }
