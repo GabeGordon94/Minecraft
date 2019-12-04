@@ -84,13 +84,8 @@ Minecraft.getBoxProperty = function(rowNumber) {
         case 3:
         case 4:
         case 5:
-            if (Minecraft.isHD) {
-                boxClass = 'skyHD';
-                break;
-            } else {
                 boxClass = 'sky';
                 break;
-            }
         case 6:
             if (Minecraft.isHD) {
                 boxClass = 'grassHD';
