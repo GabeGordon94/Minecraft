@@ -84,8 +84,8 @@ Minecraft.getBoxProperty = function (rowNumber) {
         case 3:
         case 4:
         case 5:
-                boxClass = 'sky';
-                break;
+            boxClass = 'sky';
+            break;
         case 6:
             if (Minecraft.isHD) {
                 boxClass = 'grassHD';
@@ -143,6 +143,7 @@ Minecraft.clickBox = function (e) {
         Minecraft.addResource('stone');
         eventBox.setAttribute('resource', 'sky');
     }
+    Minecraft.shouldFall();
     if (Minecraft.isBuilding) {
         Minecraft.build(eventBox);
     }
@@ -360,14 +361,12 @@ Minecraft.createToHome = function () {
     Minecraft.home = Minecraft.tools[9];
     Minecraft.home.id = 'homeBtn';
     Minecraft.home.classList.add("homeResetBtn");
-    Minecraft.home.innerText = "Home";
     Minecraft.home.addEventListener('click', Minecraft.setIntroScreen);
 
 }
 Minecraft.createReset = function () {
     Minecraft.reset = Minecraft.tools[10];
     Minecraft.reset.id = 'resetBtn';
-    Minecraft.reset.innerText = "Reset";
     Minecraft.reset.classList.add("homeResetBtn");
     Minecraft.reset.addEventListener('click', Minecraft.start);
 
@@ -376,7 +375,6 @@ Minecraft.createReset = function () {
 Minecraft.createThemeChange = function () {
     Minecraft.changeThemeBtn = Minecraft.tools[11];
     Minecraft.changeThemeBtn.id = 'changeThemeBtn';
-    Minecraft.changeThemeBtn.innerText = "Theme";
     Minecraft.changeThemeBtn.classList.add('homeResetBtn');
     Minecraft.changeThemeBtn.addEventListener('click', Minecraft.changeTheme)
 }
@@ -450,6 +448,29 @@ Minecraft.build = function (box) {
     Minecraft.addClass(box, Minecraft.currentResource)
     Minecraft.removeResource(Minecraft.currentResource);
     Minecraft.chosenResource = false;
+}
+Minecraft.shouldFall = function () {
+    let boxes = document.getElementsByClassName('box');
+    let isFalling = false;
+    for (let i = 0; i < boxes.length; i++) {
+        let resource = boxes[i].getAttribute('resource');
+        if (resource != 'sky') {
+            let bottom = Minecraft.getBottomBox(boxes[i]);
+            try { bottomResource = bottom.getAttribute('resource'); } catch{ bottomResource = "nothing" }
+            if (bottomResource == 'sky') {
+                debugger;
+                isFalling = true;
+                Minecraft.currentResource = boxes[i].getAttribute('resource');
+                boxes[i].setAttribute('resource', 'sky');
+                bottom.setAttribute('resource', Minecraft.currentResource)
+                boxes[i].classList.remove(Minecraft.currentResource);
+                bottom.classList.add(Minecraft.currentResource);
+            }
+        }
+    }
+    if (isFalling) {
+        Minecraft.shouldFall();
+    }
 }
 Minecraft.start = function () {
     let body = document.querySelector('body');

@@ -345,3 +345,23 @@ body {
         height: 650px;
     }
 }
+
+#homeBtn{
+    background-image: url('../img/home.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+#resetBtn{
+    background-image: url('../img/reset.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+#changeThemeBtn{
+    background-image: url('../img/theme.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+
+}
