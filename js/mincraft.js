@@ -62,7 +62,7 @@ Minecraft.createBoard = function () {
     Minecraft.createCloud(cloudPlaceholder);
     Minecraft.addTreasure(treasurePlaceholder);
     Minecraft.resources = {
-        wood: 0,
+        wood: 5,
         stone: 0,
         ground: 0,
         grass: 0
@@ -285,6 +285,7 @@ Minecraft.createToolBox = function () {
     Minecraft.createToolsinToolBox();
     Minecraft.createToHome();
     Minecraft.createReset();
+    Minecraft.createThemeChange();
     Minecraft.resetResources();
     Minecraft.home.classList.remove('tool');
     Minecraft.reset.classList.remove('tool');
@@ -358,7 +359,7 @@ Minecraft.createToolsinToolBox = function () {
     Minecraft.activeTool = Minecraft.shovelTool
 }
 Minecraft.createToHome = function () {
-    Minecraft.home = Minecraft.tools[10];
+    Minecraft.home = Minecraft.tools[9];
     Minecraft.home.id = 'homeBtn';
     Minecraft.home.classList.add("homeResetBtn");
     Minecraft.home.innerText = "Home";
@@ -366,14 +367,22 @@ Minecraft.createToHome = function () {
 
 }
 Minecraft.createReset = function () {
-    Minecraft.reset = Minecraft.tools[11];
+    Minecraft.reset = Minecraft.tools[10];
     Minecraft.reset.id = 'resetBtn';
     Minecraft.reset.innerText = "Reset";
     Minecraft.reset.classList.add("homeResetBtn");
-    Minecraft.reset.innerText = "Reset";
     Minecraft.reset.addEventListener('click', Minecraft.start);
 
 }
+
+Minecraft.createThemeChange = function () {
+    Minecraft.changeThemeBtn = Minecraft.tools[11];
+    Minecraft.changeThemeBtn.id = 'changeThemeBtn';
+    Minecraft.changeThemeBtn.innerText = "Theme";
+    Minecraft.changeThemeBtn.classList.add('homeResetBtn');
+    Minecraft.changeThemeBtn.addEventListener('click', Minecraft.changeTheme)
+}
+
 Minecraft.handleBuild = function (e) {
     Minecraft.chooseTool(e)
     Minecraft.currentResource = e.target.getAttribute('resource');
@@ -389,7 +398,7 @@ Minecraft.resetResources = function () {
     Minecraft.grassResource.innerText = '0';
     Minecraft.stoneResource.innerText = '0';
     Minecraft.groundResource.innerText = '0';
-    Minecraft.woodResource.innerText = '0';
+    Minecraft.woodResource.innerText = '5';
 }
 
 Minecraft.removeResource = function (type) {
