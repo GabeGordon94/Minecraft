@@ -1,6 +1,7 @@
 let Minecraft = {};
 let board = document.getElementById('gameContainer');
 let toolbox = document.getElementById('toolBox');
+Minecraft.isHD = false;
 
 Minecraft.createBoard = function () {
     board.innerHTML = "";
@@ -79,16 +80,39 @@ Minecraft.getBoxProperty = function (rowNumber) {
     let boxClass;
     switch (rowNumber) {
         case 0: case 1: case 2: case 3: case 4: case 5:
-            boxClass = 'sky';
-            break;
+            if (Minecraft.isHD) {
+                boxClass = 'skyHD';
+                break;
+            } else {
+                boxClass = 'sky';
+                break;
+            }
         case 6:
-            boxClass = 'grass';
-            break;
+            if (Minecraft.isHD) {
+                boxClass = 'grassHD';
+                break;
+            } else {
+                boxClass = 'grass';
+                break;
+            }
         case 7: case 8: case 9:
-            boxClass = 'ground';
-            break;
+            if (Minecraft.isHD) {
+                boxClass = 'groundHD';
+                break;
+            } else {
+                boxClass = 'ground';
+                break;
+            }
     }
     return boxClass;
+}
+
+Minecraft.removeClass = function (box, classname) {
+    if (Minecraft.isHD) {
+        box.classList.remove(`${classname}HD`)
+    } else {
+        box.classList.remove(`${classname}`)
+    }
 }
 
 
@@ -98,23 +122,23 @@ Minecraft.clickBox = function (e) {
     let resource = eventBox.getAttribute('resource');
     let tool = Minecraft.activeTool.getAttribute('tool')
     if (Minecraft.isRemoveable(eventBox)) {
-        if (resource == 'grass' && tool == 'shovel') {
-            eventBox.classList.remove('grass');
+        if ((resource == 'grass' || resource == 'grassHD') && tool == 'shovel') {
+            Minecraft.removeClass(eventBox, 'grass');
             Minecraft.addResource('grass');
             eventBox.setAttribute('resource', 'sky');
-        } else if (resource == 'ground' && tool == 'shovel') {
-            eventBox.classList.remove('ground');
+        } else if ((resource == 'ground'||resource =='groundHD') && tool == 'shovel') {
+            Minecraft.removeClass(eventBox, 'ground');
             Minecraft.addResource('ground');
             eventBox.setAttribute('resource', 'sky');
         }
     }
-    if (resource == 'wood' && tool == 'axe') {
-        eventBox.classList.remove('wood');
+    if ((resource == 'wood'||resource=='woodHD') && tool == 'axe') {
+        Minecraft.removeClass(eventBox, 'wood');
         Minecraft.addResource('wood');
         eventBox.setAttribute('resource', 'sky');
     }
-    if (resource == 'stone' && tool == 'pickaxe') {
-        eventBox.classList.remove('stone');
+    if ((resource == 'stone'|| resource == 'stoneHD') && tool == 'pickaxe') {
+        Minecraft.removeClass(eventBox, 'stone');
         Minecraft.addResource('stone');
         eventBox.setAttribute('resource', 'sky');
     }
@@ -136,13 +160,13 @@ Minecraft.isOpenSpace = function (box) {
     let isOpen = true;
     if (box != "" && box != undefined) {
 
-        if (box.classList.contains('grass')) {
+        if (box.classList.contains('grass') || box.classList.contains('grassHD')) {
             isOpen = false;
-        } else if (box.classList.contains('ground')) {
+        } else if (box.classList.contains('ground') || box.classList.contains('groundHD')) {
             isOpen = false;
-        } else if (box.classList.contains('stone')) {
+        } else if (box.classList.contains('stone') || box.classList.contains('stoneHD')) {
             isOpen = false;
-        } else if (box.classList.contains('wood')) {
+        } else if (box.classList.contains('wood') || box.classList.contains('woodHD')) {
             isOpen = false;
         }
     } else {
@@ -303,31 +327,31 @@ Minecraft.chooseTool = function (e) {
 
     let body = document.querySelector('body');
     body.className = "";
-    if (e.target.classList.contains('axe')) {
-        body.classList.add('axeCursor');
-
-    } else if (e.target.classList.contains('pickaxe')) {
-        body.classList.add('pickaxeCursor');
-    } else if (e.target.classList.contains('shovel')) {
-        body.classList.add('shovelCursor');
+    if (e.target.classList.contains('axe')||e.target.classList.contains('axeHD')) {
+        Minecraft.addClass(body,'axeCursor');
+    } else if (e.target.classList.contains('pickaxe')||e.target.classList.contains('pickaxeHD')) {
+        Minecraft.addClass(body,'pickaxeCursor');
+    } else if (e.target.classList.contains('shovel')||e.target.classList.contains('shovelHD')) {
+        Minecraft.addClass(body,'shovelCursor');
     } else {
-        body.classList.add('hammerCursor');
+        Minecraft.addClass(body,'hammerCursor');
     }
 }
 
 Minecraft.createToolsinToolBox = function () {
     Minecraft.axeTool = Minecraft.tools[3];
-    Minecraft.axeTool.classList.add('axe');
+    Minecraft.addClass(Minecraft.axeTool,'axe');
     Minecraft.axeTool.setAttribute('tool', 'axe')
     Minecraft.axeTool.setAttribute('title', 'axe')
     Minecraft.axeTool.addEventListener('click', Minecraft.chooseTool)
     Minecraft.shovelTool = Minecraft.tools[4];
-    Minecraft.shovelTool.classList.add('shovel', 'selectedTool');
+    Minecraft.addClass(Minecraft.shovelTool,'shovel');
+    Minecraft.shovelTool.classList.add('selectedTool');
     Minecraft.shovelTool.setAttribute('tool', 'shovel')
     Minecraft.shovelTool.setAttribute('title', 'shovel')
     Minecraft.shovelTool.addEventListener('click', Minecraft.chooseTool)
     Minecraft.pickaxeTool = Minecraft.tools[5];
-    Minecraft.pickaxeTool.classList.add('pickaxe');
+    Minecraft.addClass(Minecraft.pickaxeTool,'pickaxe');
     Minecraft.pickaxeTool.setAttribute('tool', 'pickaxe')
     Minecraft.pickaxeTool.setAttribute('title', 'pickaxe')
     Minecraft.pickaxeTool.addEventListener('click', Minecraft.chooseTool)
@@ -340,7 +364,7 @@ Minecraft.createToHome = function () {
     Minecraft.home.classList.add("homeResetBtn");
     Minecraft.home.innerText = "Home";
     Minecraft.home.addEventListener('click', Minecraft.setIntroScreen);
-    
+
 }
 Minecraft.createReset = function () {
     Minecraft.reset = Minecraft.tools[11];
@@ -349,7 +373,7 @@ Minecraft.createReset = function () {
     Minecraft.reset.classList.add("homeResetBtn");
     Minecraft.reset.innerText = "Reset";
     Minecraft.reset.addEventListener('click', Minecraft.start);
-    
+
 }
 Minecraft.handleBuild = function (e) {
     Minecraft.chooseTool(e)
@@ -390,26 +414,27 @@ Minecraft.build = function (box) {
     }
     let resources = Minecraft.getResourcesAround(box);
     switch (Minecraft.currentResource) {
-        case 'grass': {
-            if (resources.bottom == 'ground') {
+        case 'grass': case 'grassHD': {
+            if ((resources.bottom == 'ground') || (resources.bottom == 'groundHD')) {
                 legal = true;
             }
         }
-        case 'ground': {
-            if (resources.bottom == 'ground' || resources.bottom == "nothing") {
-                legal = true;
-            }
-        }
-            break;
-        case 'stone': {
-            if (resources.bottom == 'stone' || resources.bottom == 'ground' || resources.bottom == 'grass' || resources.bottom == 'nothing') {
+        case 'ground': case 'groundHD': {
+            if ((resources.bottom == 'ground') || (resources.bottom == "nothing") || (resources.bottom == 'groundHD')) {
                 legal = true;
             }
         }
             break;
-        case 'wood': if (resources.bottom == 'wood' || resources.bottom == 'ground' || resources.bottom == 'grass' || resources.bottom == 'nothing') {
-            legal = true;
+        case 'stone': case 'stoneHD': {
+            if (resources.bottom == 'stone' || resources.bottom == 'ground' || resources.bottom == 'grass' || resources.bottom == 'stoneHD' || resources.bottom == 'groundHD' || resources.bottom == 'grassHD' || resources.bottom == 'nothing') {
+                legal = true;
+            }
         }
+            break;
+        case 'wood': case 'woodHD':
+            if (resources.bottom == 'wood' || resources.bottom == 'ground' || resources.bottom == 'grass' || resources.bottom == 'nothing' || resources.bottom == 'woodHD' || resources.bottom == 'groundHD' || resources.bottom == 'grassHD') {
+                legal = true;
+            }
             break;
     }
     if (!legal) {
@@ -422,7 +447,7 @@ Minecraft.build = function (box) {
 }
 Minecraft.start = function () {
     let body = document.querySelector('body');
-    body.className='';
+    body.className = '';
     Minecraft.createBoard();
     Minecraft.createToolBox();
 }
@@ -450,6 +475,14 @@ Minecraft.setIntroScreen = function () {
 
 }
 
+Minecraft.addClass = function(box, classname){
+    if (Minecraft.isHD) {
+        box.classList.add(`${classname}HD`)
+    } else {
+        box.classList.add(`${classname}`)
+    }
+}
+
 Minecraft.addTree = function (startingBox) {
     let firstWood = startingBox;
     let secondWood = Minecraft.getTopBox(firstWood);
@@ -461,21 +494,21 @@ Minecraft.addTree = function (startingBox) {
     let topRightLeft = Minecraft.getRightBox(topLeaf);
     let topLeftLeft = Minecraft.getLeftBox(topLeaf);
 
-    firstWood.classList.add('wood');
+    Minecraft.addClass(firstWood,'wood');
     firstWood.addEventListener('click', Minecraft.clickBox);
     firstWood.setAttribute('resource', 'wood');
-    secondWood.classList.add('wood');
+    Minecraft.addClass(secondWood,'wood');
     secondWood.addEventListener('click', Minecraft.clickBox);
     secondWood.setAttribute('resource', 'wood');
-    thirdWood.classList.add('wood');
+    Minecraft.addClass(thirdWood,'wood');
     thirdWood.addEventListener('click', Minecraft.clickBox);
     thirdWood.setAttribute('resource', 'wood');
-    middleLeaf.classList.add('leaves');
-    middleRightLeaf.classList.add('leaves');
-    middleLeftLeaf.classList.add('leaves');
-    topLeaf.classList.add('leaves');
-    topRightLeft.classList.add('leaves');
-    topLeftLeft.classList.add('leaves');
+    Minecraft.addClass(middleLeaf,'leaves');
+    Minecraft.addClass(middleRightLeaf,'leaves');
+    Minecraft.addClass(middleLeftLeaf,'leaves');
+    Minecraft.addClass(topLeaf,'leaves');
+    Minecraft.addClass(topRightLeft,'leaves');
+    Minecraft.addClass(topLeftLeft,'leaves');
 }
 Minecraft.createCloud = function (startingBox) {
     let middleCloud = startingBox;
@@ -487,32 +520,32 @@ Minecraft.createCloud = function (startingBox) {
     let bottomCloud = Minecraft.getBottomBox(middleCloud);
     let bottomRightCloud = Minecraft.getRightBox(bottomCloud);
 
-    middleCloud.classList.add('cloud');
-    leftCloud.classList.add('cloud');
-    rightCloud.classList.add('cloud');
-    farRightCloud.classList.add('cloud');
-    topCloud.classList.add('cloud');
-    topRightCloud.classList.add('cloud');
-    bottomCloud.classList.add('cloud');
-    bottomRightCloud.classList.add('cloud');
 
+    Minecraft.addClass(middleCloud,'cloud');
+    Minecraft.addClass(leftCloud,'cloud');
+    Minecraft.addClass(rightCloud,'cloud');
+    Minecraft.addClass(farRightCloud,'cloud');
+    Minecraft.addClass(topCloud,'cloud');
+    Minecraft.addClass(topRightCloud,'cloud');
+    Minecraft.addClass(bottomCloud,'cloud');
+    Minecraft.addClass(bottomRightCloud,'cloud');
 }
 
 Minecraft.addDoubleStone = function (startingBox) {
     let firstStone = startingBox;
     let secondStone = Minecraft.getTopBox(startingBox);
 
-    firstStone.classList.add('stone');
+    Minecraft.addClass(firstStone,'stone');
     firstStone.addEventListener('click', Minecraft.clickBox);
     firstStone.setAttribute('resource', 'stone');
-    secondStone.classList.add('stone');
+    Minecraft.addClass(secondStone,'stone');
     secondStone.addEventListener('click', Minecraft.clickBox);
     secondStone.setAttribute('resource', 'stone');
 }
 Minecraft.addSingleStone = function (startingBox) {
     let firstStone = startingBox;
-
-    firstStone.classList.add('stone');
+    
+    Minecraft.addClass(firstStone,'stone');
     firstStone.setAttribute('resource', 'stone');
     firstStone.addEventListener('click', Minecraft.clickBox);
 }

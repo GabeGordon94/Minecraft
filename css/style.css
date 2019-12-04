@@ -133,32 +133,60 @@ body{
 .grass, .grassResource{
     background-image: url('../img/grass.jpg');
 }
+.grassHD, .grassResourceHD{
+    background-image: url('../img/grassHD.jpg');
+}
 
 .ground, .groundResource{
     background-image: url('../img/ground.jpg') !important;
 }
+
+.groundHD, .groundResourceHD{
+    background-image: url('../img/groundHD.jpg') !important;
+}
 .wood, .woodResource{
     background-image: url('../img/wood.jpg');
+}
+.woodHD, .woodResourceHD{
+    background-image: url('../img/woodHD.jpg');
 }
 .stone, .stoneResource{
     background-image: url('../img/stone.jpg');
 }
+.stoneHD, .stoneResourceHD{
+    background-image: url('../img/stoneHD.jpg');
+}
 .leaves, .leavesResource{
     background-image: url('../img/leaves.png') !important;
 }
-.stoneResource:hover, .woodResource:hover, .groundResource:hover, .grassResource:hover{
+.leavesHD, .leavesResourceHD{
+    background-image: url('../img/leavesHD.png') !important;
+}
+.stoneResource:hover, .woodResource:hover, .groundResource:hover, .grassResource:hover
+.stoneResourceHD:hover, .woodResourceHD:hover, .groundResourceHD:hover, .grassResourceHD:hover{
     opacity: 0.75;
 }
 .axe{
     background-image: url('../img/diamond_axe.png');
     background-size: contain;
-    
+}
+.axeHD{
+    background-image: url('../img/diamond_axe.png');
+    background-size: contain;
 }
 .shovel{
     background-image: url('../img/diamond_shovel.png');
     background-size: contain;
 }
+.shovelHD{
+    background-image: url('../img/diamond_shovel.png');
+    background-size: contain;
+}
 .pickaxe{
+    background-image: url('../img/diamond_hoe.png');
+    background-size: contain;
+}
+.pickaxeHD{
     background-image: url('../img/diamond_hoe.png');
     background-size: contain;
 }
@@ -200,6 +228,9 @@ body{
 .cloud{
     background-color: #EFEEED;
 }
+.cloudHD{
+    background-color: #EFEEED;
+}
 
 .axeCursor{
     cursor:url('../img/axe.cur'),auto !important;
@@ -212,6 +243,18 @@ body{
 }
 .hammerCursor{
     cursor:url('../img/hammer.cur'),auto !important;
+}
+.axeCursorHD{
+    cursor:url('../img/axeHD.cur'),auto !important;
+}
+.pickaxeCursorHD{
+    cursor:url('../img/pickaxeHD.cur'),auto !important;
+}
+.shovelCursorHD{
+    cursor:url('../img/shovelHD.cur'),auto !important;
+}
+.hammerCursorHD{
+    cursor:url('../img/hammerHD.cur'),auto !important;
 }
 
 .treasureBox{
