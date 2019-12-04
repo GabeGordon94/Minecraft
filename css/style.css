@@ -1,17 +1,17 @@
-body{
-    margin:0;
+body {
+    margin: 0;
     font-family: 'Tomorrow', sans-serif;
-    
 }
-#intro{
-    height:100vh;
-    width:100vw;
+
+#intro {
+    height: 100vh;
+    width: 100vw;
     background-image: url('../img/intro_background.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     overflow: hidden;
-    display:flex;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -19,17 +19,17 @@ body{
     cursor: auto;
 }
 
-.introHeading{
-    width:100%;
+.introHeading {
+    width: 100%;
     height: 100px;
-    margin-bottom:20px;
+    margin-bottom: 20px;
     background-image: url(../img/Minecraft_logo.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
 }
 
-.introButton>button{
+.introButton>button {
     font-family: 'Tomorrow', sans-serif;
     font-weight: 900;
     font-size: 100%;
@@ -37,66 +37,66 @@ body{
     margin: 0 6px 0 6px
 }
 
-#tutorialWrapper{
-    cursor:auto;
-    height:100vh;
-    width:100vw;
+#tutorialWrapper {
+    cursor: auto;
+    height: 100vh;
+    width: 100vw;
     position: absolute;
-    background-color:rgba(112,128,144, 0.8);
+    background-color: rgba(112, 128, 144, 0.8);
     justify-content: center;
     align-items: center;
     display: none;
 }
 
-.tutorialBox{
-    height:70vh;
-    width:35vw;
+.tutorialBox {
+    height: 70vh;
+    width: 35vw;
     background-color: whitesmoke;
-    border-radius:5px;
+    border-radius: 5px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
     text-align: center;
-    padding:10px;
+    padding: 10px;
 }
 
-.tutorialMainText{
+.tutorialMainText {
     margin: 0 40px 0 40px;
 }
 
-.tutorialHeader{
+.tutorialHeader {
     font-weight: 900;
-    font-size:35px;
-    
+    font-size: 35px;
 }
-#closeTutorial{
+
+#closeTutorial {
     font-family: 'Tomorrow', sans-serif;
     font-weight: 900;
     font-size: 20px;
-    border-radius:5px;
+    border-radius: 5px;
     background-color: tomato;
-    border:2px solid black;
-    
+    border: 2px solid black;
 }
 
-#gameContainer{
+#gameContainer {
     height: calc(100vh - 100px);
-    width:100wh;
-    
+    width: 100wh;
     background-color: lightblue;
 }
-.box{
-    width:5%;
-    background-size: cover !important;
+
+.box {
+    width: 5%;
+    background-size: cover;
     background-repeat: no-repeat;
 }
 
-.rows{
-    display:flex;
-    height:10%;
+.rows {
+    display: flex;
+    height: 10%;
 }
-#toolBox{
+
+#toolBox {
     position: fixed;
     height: 100px;
     border: 1px solid black;
@@ -107,12 +107,15 @@ body{
     justify-content: center;
     flex-direction: column;
 }
-#top-toolBox, #bottom-toolBox{
+
+#top-toolBox,
+#bottom-toolBox {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.tool{
+
+.tool {
     border-radius: 5px;
     height: 40px;
     width: calc(100vw / 18);
@@ -123,94 +126,129 @@ body{
     background-repeat: no-repeat;
     cursor: pointer;
     background-position: top;
-    transition:transform;
+    transition: transform;
 }
 
-.tool:active{
-    transform:scale(0.97) ;
-} 
+.tool:active {
+    transform: scale(0.97);
+}
 
-.grass, .grassResource{
+.grass,
+.grassResource {
     background-image: url('../img/grass.jpg');
 }
-.grassHD, .grassResourceHD{
+
+.grassHD,
+.grassResourceHD {
     background-image: url('../img/grassHD.jpg');
 }
 
-.ground, .groundResource{
+.ground,
+.groundResource {
     background-image: url('../img/ground.jpg') !important;
+    background-size: cover !important;
 }
 
-.groundHD, .groundResourceHD{
+.groundHD,
+.groundResourceHD {
     background-image: url('../img/groundHD.jpg') !important;
+    background-size: cover !important;
 }
-.wood, .woodResource{
+
+.wood,
+.woodResource {
     background-image: url('../img/wood.jpg');
 }
-.woodHD, .woodResourceHD{
+
+.woodHD,
+.woodResourceHD {
     background-image: url('../img/woodHD.jpg');
 }
-.stone, .stoneResource{
+
+.stone,
+.stoneResource {
     background-image: url('../img/stone.jpg');
 }
-.stoneHD, .stoneResourceHD{
+
+.stoneHD,
+.stoneResourceHD {
     background-image: url('../img/stoneHD.jpg');
 }
-.leaves, .leavesResource{
+
+.leaves,
+.leavesResource {
     background-image: url('../img/leaves.png') !important;
+    background-size: cover !important;
 }
-.leavesHD, .leavesResourceHD{
+
+.leavesHD,
+.leavesResourceHD {
     background-image: url('../img/leavesHD.jpg') !important;
+    background-size: cover !important;
 }
-.stoneResource:hover, .woodResource:hover, .groundResource:hover, .grassResource:hover
-.stoneResourceHD:hover, .woodResourceHD:hover, .groundResourceHD:hover, .grassResourceHD:hover{
+
+.stoneResource:hover,
+.woodResource:hover,
+.groundResource:hover,
+.grassResource:hover .stoneResourceHD:hover,
+.woodResourceHD:hover,
+.groundResourceHD:hover,
+.grassResourceHD:hover {
     opacity: 0.75;
 }
-.axe{
+
+.axe {
     background-image: url('../img/diamond_axe.png');
     background-size: contain;
 }
-.axeHD{
+
+.axeHD {
     background-image: url('../img/axeHD.png');
     background-size: contain;
 }
-.shovel{
+
+.shovel {
     background-image: url('../img/diamond_shovel.png');
     background-size: contain;
 }
-.shovelHD{
+
+.shovelHD {
     background-image: url('../img/shovelHD.png');
     background-size: contain;
 }
-.pickaxe{
+
+.pickaxe {
     background-image: url('../img/diamond_hoe.png');
     background-size: contain;
 }
-.pickaxeHD{
+
+.pickaxeHD {
     background-image: url('../img/pickaxeHD.png');
     background-size: contain;
 }
 
-.axe:hover, .shovel:hover, .pickaxe:hover{
+.axe:hover,
+.shovel:hover,
+.pickaxe:hover {
     background-color: rgba(255, 234, 0, 0.3)
 }
 
-.selectedTool{
-    background-color: rgba(255, 234, 0, 0.8); 
-    border: 1px solid rgba(255, 234, 0, 0.8); 
+.selectedTool {
+    background-color: rgba(255, 234, 0, 0.8);
+    border: 1px solid rgba(255, 234, 0, 0.8);
 }
 
-.box:hover{
+.box:hover {
     opacity: 70%;
 }
 
-.homeResetBtn{
+.homeResetBtn {
     background-color: #188271;
-    display:flex;
+    display: flex;
     justify-content: center;
     align-items: center;
     font-size: 100%;
-    color:white;
+    color: white;
     border-radius: 5px;
     height: 40px;
     width: calc(100vw / 18);
@@ -219,79 +257,91 @@ body{
     cursor: pointer;
 }
 
-.homeResetBtn:hover{
-    opacity:80%;
+.homeResetBtn:hover {
+    opacity: 80%;
 }
 
-
-.cloud{
-    background-color: #EFEEED;
-}
-.cloudHD{
+.cloud {
     background-color: #EFEEED;
 }
 
-.axeCursor{
-    cursor:url('../img/axe.cur'),auto !important;
-}
-.pickaxeCursor{
-    cursor:url('../img/pickaxe.cur'),auto !important;
-}
-.shovelCursor{
-    cursor:url('../img/shovel.cur'),auto !important;
-}
-.hammerCursor{
-    cursor:url('../img/hammer.cur'),auto !important;
-}
-.axeCursorHD{
-    cursor:url('../img/axeHD.cur'),auto !important;
-}
-.pickaxeCursorHD{
-    cursor:url('../img/pickaxeHD.cur'),auto !important;
-}
-.shovelCursorHD{
-    cursor:url('../img/shovelHD.cur'),auto !important;
-}
-.hammerCursorHD{
-    cursor:url('../img/hammerHD.cur'),auto !important;
+.cloudHD {
+    background-image: url('../img/cloudHD.png');
+    background-size: contain;
 }
 
-.treasureBox{
+.axeCursor {
+    cursor: url('../img/axe.cur'), auto !important;
+}
+
+.pickaxeCursor {
+    cursor: url('../img/pickaxe.cur'), auto !important;
+}
+
+.shovelCursor {
+    cursor: url('../img/shovel.cur'), auto !important;
+}
+
+.hammerCursor {
+    cursor: url('../img/hammer.cur'), auto !important;
+}
+
+.axeCursorHD {
+    cursor: url('../img/axeHD.cur'), auto !important;
+}
+
+.pickaxeCursorHD {
+    cursor: url('../img/pickaxeHD.cur'), auto !important;
+}
+
+.shovelCursorHD {
+    cursor: url('../img/shovelHD.cur'), auto !important;
+}
+
+.hammerCursorHD {
+    cursor: url('../img/hammerHD.cur'), auto !important;
+}
+
+.treasureBox {
     background-size: contain;
     background-position: center;
     background-image: url('../img/treasureChest.gif');
 }
-    @media screen and (max-width: 576px){
-        .tool .homeResetBtn{
-            width: calc(100vw / 8);
-        }
-        .homeResetBtn{
-            font-size:5px;
-        }
+
+@media screen and (max-width: 576px) {
+    .tool .homeResetBtn {
+        width: calc(100vw / 8);
     }
-    @media screen and (max-width: 900px){
-        .tool .homeResetBtn{
-            width: calc(100vw / 12);
-        }
-        .homeResetBtn{
-            font-size:10px;
-        }
+    .homeResetBtn {
+        font-size: 5px;
     }
-    @media screen and (max-width: 800px){
-        #gameContainer{
-            width:1000px;
-        }
+}
+
+@media screen and (max-width: 900px) {
+    .tool .homeResetBtn {
+        width: calc(100vw / 12);
     }
-    @media screen and (max-width: 1000px){
-        .tutorialHeader {
-            font-size: 42px;
-        }
-        .tutorialMainText{
-            font-size: 14px;
-            width: 91%;
-        }
-        .tutorialBox{
-            width: 300px;
-            height: 650px;
-        }
+    .homeResetBtn {
+        font-size: 10px;
     }
+}
+
+@media screen and (max-width: 800px) {
+    #gameContainer {
+        width: 1000px;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .tutorialHeader {
+        font-size: 42px;
+    }
+    .tutorialMainText {
+        font-size: 14px;
+        width: 91%;
+    }
+    .tutorialBox {
+        width: 300px;
+        height: 650px;
+    }
+}
