@@ -112,6 +112,9 @@ Minecraft.removeClass = function (box, classname) {
     if (classname == 'sky') {
         box.classList.remove('sky');
         return;
+    } else if (classname == 'special') {
+        box.classList.remove(classname);
+        return;
     }
     if (classname.includes('HD')) {
         box.classList.remove(classname);
@@ -457,24 +460,42 @@ Minecraft.build = function (box) {
     Minecraft.removeResource(Minecraft.currentResource);
     Minecraft.chosenResource = false;
 }
+Minecraft.fall = function (box, bottom) {
+    isFalling = true;
+    Minecraft.currentResource = box.getAttribute('resource');
+    box.setAttribute('resource', 'sky');
+    bottom.setAttribute('resource', Minecraft.currentResource);
+    Minecraft.removeClass(box, Minecraft.currentResource);
+    Minecraft.addClass(bottom, Minecraft.currentResource);
+}
 Minecraft.shouldFall = function () {
     let boxes = document.getElementsByClassName('box');
     let isFalling = false;
     for (let i = 0; i < boxes.length; i++) {
         let resource = boxes[i].getAttribute('resource');
-        if (resource != 'sky') {
+        if (resource != 'sky' && resource != 'leaves' && resource != 'special') {
             let bottom = Minecraft.getBottomBox(boxes[i]);
             try { bottomResource = bottom.getAttribute('resource'); } catch{ bottomResource = "nothing" }
             if (bottomResource == 'sky') {
-                debugger;
                 isFalling = true;
-                Minecraft.currentResource = boxes[i].getAttribute('resource');
+                Minecraft.fall(boxes[i], bottom);
+            }
+        } else if (resource == 'leaves') {
+            let resources = Minecraft.getResourcesAround(boxes[i]);
+            if (resources.left == 'leaves' && resources.right == 'leaves' && resources.bottom == 'sky') {
+                Minecraft.leavesFall();
+            }
+        } else if (resource == 'special') {
+            let bottom = Minecraft.getBottomBox(boxes[i]);
+            try { bottomResource = bottom.getAttribute('resource'); } catch{ bottomResource = "nothing" }
+            if (bottomResource == 'sky') {
+                Minecraft.itemFall(boxes[i], bottom);
+            } else {
+                isFalling = false;
                 boxes[i].setAttribute('resource', 'sky');
-                bottom.setAttribute('resource', Minecraft.currentResource);
-                Minecraft.removeClass(boxes[i], Minecraft.currentResource);
-                Minecraft.addClass(bottom, Minecraft.currentResource);
-                //boxes[i].classList.remove(Minecraft.currentResource);
-                // bottom.classList.add(Minecraft.currentResource);
+                setTimeout(() => {
+                    boxes[i].classList.remove('special');
+                }, 3000)
             }
         }
     }
@@ -482,6 +503,35 @@ Minecraft.shouldFall = function () {
         Minecraft.shouldFall();
     }
 }
+Minecraft.itemFall = function (box, bottom) {
+    isFalling = true;
+    Minecraft.currentResource = box.getAttribute('resource');
+    box.setAttribute('resource', 'sky');
+    bottom.setAttribute('resource', Minecraft.currentResource);
+    Minecraft.removeClass(box, Minecraft.currentResource);
+    Minecraft.addClass(bottom, Minecraft.currentResource);
+}
+Minecraft.leavesFall = function () {
+    let leaves;
+    if (Minecraft.isHD) {
+        leaves = document.getElementsByClassName('leavesHD');
+    } else {
+        leaves = document.getElementsByClassName('leaves');
+    }
+    for (let i = leaves.length - 1; i >= 0; i--) {
+        Minecraft.fall(leaves[i], Minecraft.getBottomBox(leaves[i]));
+    }
+}
+setInterval(() => {
+    Minecraft.shouldFall();
+},20000)
+setInterval(() => {
+    let sky = document.getElementsByClassName('sky');
+    num = Math.floor(Math.random() * sky.length);
+    sky[num].classList.remove('sky');
+    sky[num].classList.add('special');
+    sky[num].setAttribute('resource', 'special');
+},15000)
 Minecraft.start = function () {
     let body = document.querySelector('body');
     body.className = '';
@@ -515,6 +565,10 @@ Minecraft.setIntroScreen = function () {
 Minecraft.addClass = function (box, classname) {
     if (classname == 'sky') {
         box.classList.add('sky');
+        return;
+    }
+    else if (classname == 'special') {
+        box.classList.add(classname);
         return;
     }
     if (classname.includes('HD')) {
@@ -554,6 +608,13 @@ Minecraft.addTree = function (startingBox) {
     Minecraft.addClass(topLeaf, 'leaves');
     Minecraft.addClass(topRightLeft, 'leaves');
     Minecraft.addClass(topLeftLeft, 'leaves');
+    let leaves = document.getElementsByClassName('leaves');
+    if (Minecraft.isHD) {
+        leaves = document.getElementsByClassName('leavesHD');
+    }
+    for (let i = 0; i < leaves.length; i++) {
+        leaves[i].setAttribute('resource', 'leaves');
+    }
 }
 Minecraft.createCloud = function (startingBox) {
     let middleCloud = startingBox;
