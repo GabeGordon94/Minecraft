@@ -109,6 +109,14 @@ Minecraft.getBoxProperty = function (rowNumber) {
 }
 
 Minecraft.removeClass = function (box, classname) {
+    if(classname == 'sky'){
+        box.classList.remove('sky');
+        return ;
+    }
+    if(classname.includes('HD')){
+        box.classList.remove(classname);
+        return;
+    }
     if (Minecraft.isHD) {
         box.classList.remove(`${classname}HD`)
     } else {
@@ -462,9 +470,11 @@ Minecraft.shouldFall = function () {
                 isFalling = true;
                 Minecraft.currentResource = boxes[i].getAttribute('resource');
                 boxes[i].setAttribute('resource', 'sky');
-                bottom.setAttribute('resource', Minecraft.currentResource)
-                boxes[i].classList.remove(Minecraft.currentResource);
-                bottom.classList.add(Minecraft.currentResource);
+                bottom.setAttribute('resource', Minecraft.currentResource);
+                Minecraft.removeClass(boxes[i],Minecraft.currentResource);
+                Minecraft.addClass(bottom,Minecraft.currentResource);
+                //boxes[i].classList.remove(Minecraft.currentResource);
+               // bottom.classList.add(Minecraft.currentResource);
             }
         }
     }
@@ -503,6 +513,14 @@ Minecraft.setIntroScreen = function () {
 }
 
 Minecraft.addClass = function (box, classname) {
+    if(classname == 'sky'){
+        box.classList.add('sky');
+        return ;
+    }
+    if(classname.includes('HD')){
+        box.classList.add(classname);
+        return;
+    }
     if (Minecraft.isHD) {
         box.classList.add(`${classname}HD`)
     } else {
