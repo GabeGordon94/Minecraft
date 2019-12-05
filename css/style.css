@@ -363,5 +363,10 @@ body {
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-
+}
+.special{
+    background-image: url('../img/soldier.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }
