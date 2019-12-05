@@ -449,24 +449,38 @@ Minecraft.build = function (box) {
     Minecraft.removeResource(Minecraft.currentResource);
     Minecraft.chosenResource = false;
 }
+Minecraft.fall = function (box, bottom) {
+    isFalling = true;
+    Minecraft.currentResource = box.getAttribute('resource');
+    box.setAttribute('resource', 'sky');
+    bottom.setAttribute('resource', Minecraft.currentResource);
+    Minecraft.removeClass(box,Minecraft.currentResource);
+    Minecraft.addClass(bottom,Minecraft.currentResource);
+    /* box.classList.remove(Minecraft.currentResource);
+    bottom.classList.add(Minecraft.currentResource); */
+}
 Minecraft.shouldFall = function () {
     let boxes = document.getElementsByClassName('box');
     let isFalling = false;
     for (let i = 0; i < boxes.length; i++) {
         let resource = boxes[i].getAttribute('resource');
-        if (resource != 'sky') {
+        if (resource != 'sky' && resource != 'leaves') {
             let bottom = Minecraft.getBottomBox(boxes[i]);
             try { bottomResource = bottom.getAttribute('resource'); } catch{ bottomResource = "nothing" }
             if (bottomResource == 'sky') {
-                debugger;
-                isFalling = true;
-                Minecraft.currentResource = boxes[i].getAttribute('resource');
-                boxes[i].setAttribute('resource', 'sky');
-                bottom.setAttribute('resource', Minecraft.currentResource)
-                boxes[i].classList.remove(Minecraft.currentResource);
-                bottom.classList.add(Minecraft.currentResource);
+                Minecraft.fall(boxes[i], bottom);
             }
-        }
+        }/*  else if (resource == 'leaves') {
+            let resources = Minecraft.getResourcesAround(boxes[i]);
+            if (resources.left == 'leaves' && resources.right == 'leaves') {
+                let bottom = Minecraft.getBottomBox(boxes[i]);
+                Minecraft.fall(boxes[i], bottom);
+            } else {
+                if(!(resources.left == 'leaves' || resources.right == 'leaves')) {
+                    Minecraft.fall(boxes[i], bottom);
+                }
+            }
+        } */
     }
     if (isFalling) {
         Minecraft.shouldFall();
@@ -536,6 +550,10 @@ Minecraft.addTree = function (startingBox) {
     Minecraft.addClass(topLeaf, 'leaves');
     Minecraft.addClass(topRightLeft, 'leaves');
     Minecraft.addClass(topLeftLeft, 'leaves');
+    let leaves = document.getElementsByClassName('leaves');
+    for (let i = 0; i < leaves.length; i++) {
+        leaves[i].setAttribute('resource', 'leaves')
+    }
 }
 Minecraft.createCloud = function (startingBox) {
     let middleCloud = startingBox;
