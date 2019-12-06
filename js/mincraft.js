@@ -527,7 +527,7 @@ setInterval(() => {
 },20000)
 setInterval(() => {
     let sky = document.getElementsByClassName('sky');
-    num = Math.floor(Math.random() * sky.length);
+    num = Math.floor(Math.random() * 20);
     sky[num].classList.remove('sky');
     sky[num].classList.add('special');
     sky[num].setAttribute('resource', 'special');
