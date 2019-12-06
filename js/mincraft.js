@@ -486,7 +486,6 @@ Minecraft.shouldFall = function (isSpecial) {
                 Minecraft.leavesFall();
             }
         } else if (resource == 'special' && isSpecial) {
-            debugger
             let bottom = Minecraft.getBottomBox(boxes[i]);
             try { bottomResource = bottom.getAttribute('resource'); } catch{ bottomResource = "nothing" }
             if (bottomResource == 'sky') {
@@ -511,12 +510,12 @@ Minecraft.shouldFall = function (isSpecial) {
 Minecraft.itemFall = function (box, bottom) {
     isFalling = true;
     let picLink=box.style.backgroundImage;
-    Minecraft.currentResource = box.getAttribute('resource');
+    let resource = box.getAttribute('resource');
     box.setAttribute('resource', 'sky');
-    bottom.setAttribute('resource', Minecraft.currentResource);
-    Minecraft.removeClass(box, Minecraft.currentResource);
+    bottom.setAttribute('resource', resource);
+    Minecraft.removeClass(box, resource);
     box.style.backgroundImage='';
-    Minecraft.addClass(bottom, Minecraft.currentResource);
+    Minecraft.addClass(bottom, resource);
     bottom.style.backgroundImage=picLink;
 }
 Minecraft.leavesFall = function () {
@@ -542,7 +541,7 @@ setInterval(() => {
     sky[num].classList.add('special');
     sky[num].style.backgroundImage=`url('./img/${picArray[rando]}')`
     sky[num].setAttribute('resource', 'special');
-},5000)
+},10000)
 Minecraft.start = function () {
     let body = document.querySelector('body');
     body.className = '';
