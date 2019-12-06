@@ -486,16 +486,21 @@ Minecraft.shouldFall = function (isSpecial) {
                 Minecraft.leavesFall();
             }
         } else if (resource == 'special' && isSpecial) {
+            debugger
             let bottom = Minecraft.getBottomBox(boxes[i]);
             try { bottomResource = bottom.getAttribute('resource'); } catch{ bottomResource = "nothing" }
             if (bottomResource == 'sky') {
-                Minecraft.itemFall(boxes[i], bottom);
+                setTimeout(()=>{
+                    Minecraft.itemFall(boxes[i], bottom);
+                },500);                
             } else {
                 isFalling = false;
                 boxes[i].setAttribute('resource', 'sky');
+                boxes[i].style.backgroundImage="url('./img/explode.gif')";
                 setTimeout(() => {
                     boxes[i].classList.remove('special');
-                }, 3000)
+                    boxes[i].style.backgroundImage='';
+                }, 1000)
             }
         }
     }
@@ -505,11 +510,14 @@ Minecraft.shouldFall = function (isSpecial) {
 }
 Minecraft.itemFall = function (box, bottom) {
     isFalling = true;
+    let picLink=box.style.backgroundImage;
     Minecraft.currentResource = box.getAttribute('resource');
     box.setAttribute('resource', 'sky');
     bottom.setAttribute('resource', Minecraft.currentResource);
     Minecraft.removeClass(box, Minecraft.currentResource);
+    box.style.backgroundImage='';
     Minecraft.addClass(bottom, Minecraft.currentResource);
+    bottom.style.backgroundImage=picLink;
 }
 Minecraft.leavesFall = function () {
     let leaves;
@@ -524,14 +532,17 @@ Minecraft.leavesFall = function () {
 }
 setInterval(() => {
     Minecraft.shouldFall(true);
-},20000)
+},1000)
 setInterval(() => {
     let sky = document.getElementsByClassName('sky');
+    let picArray=['soldier.png','gabe.jpg','yinon.jpg','jack.jpg','tank.png','mario.png','luigi.png'];
+    let rando=Math.floor(Math.random()*picArray.length);
     num = Math.floor(Math.random() * 20);
     sky[num].classList.remove('sky');
     sky[num].classList.add('special');
+    sky[num].style.backgroundImage=`url('./img/${picArray[rando]}')`
     sky[num].setAttribute('resource', 'special');
-},10000)
+},5000)
 Minecraft.start = function () {
     let body = document.querySelector('body');
     body.className = '';
