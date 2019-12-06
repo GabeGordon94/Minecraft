@@ -524,14 +524,14 @@ Minecraft.leavesFall = function () {
 }
 setInterval(() => {
     Minecraft.shouldFall();
-},20000)
+},2000)
 setInterval(() => {
     let sky = document.getElementsByClassName('sky');
     num = Math.floor(Math.random() * sky.length);
     sky[num].classList.remove('sky');
     sky[num].classList.add('special');
     sky[num].setAttribute('resource', 'special');
-},15000)
+},10000)
 Minecraft.start = function () {
     let body = document.querySelector('body');
     body.className = '';
